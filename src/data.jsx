@@ -17,7 +17,8 @@ export const tabs = [
     { name: 'Industries', icon: <Globe size={18} />, color: 'emerald' },
     { name: 'AI Solutions', icon: <BrainCircuit size={18} />, color: 'purple' },
     { name: 'Cyber Security', icon: <ShieldAlert size={18} />, color: 'red' },
-    { name: 'AI Security', icon: <Lock size={18} />, color: 'rose' }
+    { name: 'AI Security', icon: <Lock size={18} />, color: 'rose' },
+    { name: 'AGI Anti-Terror', icon: <Bot size={18} />, color: 'teal' }
 ];
 
 export const contactData = {
@@ -303,3 +304,53 @@ export const aiSecurityData = [
         desc: "Inventorying inference APIs, assessing prompt handling, RAG poisoning, enforcing input sanitization, PII redaction, and compliance tracking (ISO 42001, NIST AI RMF)."
     }
 ];
+
+export const antiTerrorData = {
+    title: "AI-Based Public Safety & Anti-Terror Monitoring System (Concept)",
+    goal: {
+        title: "Project Goal",
+        desc: "Build an AI-powered integrated security system using: Autonomous drones, Ground robots, Smart CCTV, AI threat detection, Real-time command & control",
+        purpose: ["Detect suspicious activities", "Monitor crowd safety", "Prevent terror incidents", "Assist law enforcement response"],
+        important: "Detecting \"physical address of each person\" is illegal without court-approved government access. Instead, system should detect threat behavior, not private identity data."
+    },
+    architecture: [
+        { title: "AI Surveillance Layer", items: ["Smart CCTV with edge AI", "Drone-based aerial monitoring", "Mobile patrol robots"] },
+        { title: "AI Detection Models", items: ["Weapon detection (guns, explosives)", "Abandoned object detection", "Suspicious behavior detection", "Crowd density analysis", "Anomaly detection"] },
+        { title: "Command & Control Center", items: ["Real-time dashboard", "Heatmap of risk zones", "Threat level scoring", "Emergency alert automation"] }
+    ],
+    components: [
+        {
+            title: "Autonomous Drones",
+            models: "Use drones similar to DJI industrial models, Skydio autonomous drones",
+            capabilities: ["Live 4K video feed", "Night vision (thermal camera)", "AI onboard detection (YOLOv8)", "GPS mapping", "Auto patrol routes"],
+            aiModels: ["Object Detection (YOLOv8)", "Pose Estimation", "Weapon Detection CNN", "Crowd abnormal motion detection (LSTM)"]
+        },
+        {
+            title: "Ground Patrol Robots",
+            models: "Similar to Boston Dynamics (Spot robot)",
+            features: ["Face detection (not identification unless legal)", "Loudspeaker alerts", "Crowd communication", "Bomb detection sensors", "Gas detection sensors"]
+        }
+    ],
+    intelligenceModules: [
+        { title: "Suspicious Behavior Detection", items: ["Running against crowd flow", "Sudden aggressive motion", "Object handover pattern", "Hidden face in restricted zone"], models: "CNN + LSTM, Transformer-based action recognition" },
+        { title: "Weapon & Explosive Detection", items: ["Bounding box detection", "Confidence score", "Auto-alert"], dataset: "Open Images Dataset, Custom Pakistani environment dataset" },
+        { title: "Crowd Intelligence", items: ["Density estimation", "Panic detection", "Stampede prediction", "Violence detection"] }
+    ],
+    legalHandling: {
+        title: "Address & Identity Handling (Legal Version)",
+        use: ["National ID integration (only with government access)", "Facial recognition ONLY for wanted database", "License plate recognition (LPR)", "Geo-tagging of suspicious activity"],
+        never: ["Track normal citizens without warrant", "Store personal private data without consent"]
+    },
+    deploymentAreas: ["Airports", "Railway stations", "Public rallies", "Religious gatherings", "Sensitive zones"],
+    techStack: [
+        { category: "Backend", items: "FastAPI, Node.js, Kafka, PostgreSQL + TimescaleDB" },
+        { category: "AI", items: "PyTorch, TensorFlow, OpenCV, YOLOv8, Detectron2" },
+        { category: "Edge AI & Cloud", items: "NVIDIA Jetson, Coral TPU, AWS GovCloud, Local secure server" }
+    ],
+    securityLayer: ["AES-256 Encryption", "Blockchain logging", "Multi-layer auth", "Zero trust architecture"],
+    riskScoring: ["Threat score (0–100)", "Location risk multiplier", "Behavior anomaly index", "Crowd sensitivity factor"],
+    riskActions: ["Alert police", "Send nearest drone", "Activate robot patrol", "Lock entry gates"],
+    advancedFeatures: ["AI suspect sketch", "Thermal weapon detection", "Drone swarm coordination", "AI predictive hotspot mapping"],
+    requirements: ["Universal Act for peace", "Data privacy laws", "Human rights regulations", "Judicial oversight"],
+    startup: ["Government contract", "Smart city security solution", "SaaS AI monitoring platform", "Export to Middle East"]
+};

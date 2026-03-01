@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Menu, X, Sparkles, MessageSquare, Linkedin, Github,
   History, Award, Binary, Zap, CheckCircle2, Headphones, Layers, Workflow, BarChart3, Activity,
-  Phone, Lock, ShieldAlert
+  Phone, Lock, ShieldAlert, Bot, BrainCircuit, ShieldCheck, Globe
 } from 'lucide-react';
 import {
   tabs, contactData, educationData, googleBadges, experienceData,
   skillsData, servicesData, industriesData, aiSolutionsData,
-  cyberSecurityData, aiSecurityData
+  cyberSecurityData, aiSecurityData, antiTerrorData
 } from './data';
 
 const App = () => {
@@ -126,8 +126,8 @@ const App = () => {
                   key={tab.name}
                   onClick={() => handleTabClick(tab.name)}
                   className={`flex items-center gap-4 px-6 py-4 rounded-xl text-left font-black tracking-widest uppercase text-xs transition-all ${activeTab === tab.name
-                      ? `bg-${tab.color}-600/20 text-${tab.color}-400 border border-${tab.color}-500/30`
-                      : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                    ? `bg-${tab.color}-600/20 text-${tab.color}-400 border border-${tab.color}-500/30`
+                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
                     }`}
                 >
                   {tab.icon} {tab.name}
@@ -370,6 +370,223 @@ const App = () => {
                 </div>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* AGI ANTI-TERROR (Tab 10) */}
+        {activeTab === 'AGI Anti-Terror' && (
+          <div className="space-y-12 animate-in fade-in duration-700">
+            {/* Header */}
+            <div className="bg-teal-950/20 border border-teal-500/20 p-10 md:p-16 rounded-[3rem] text-center relative overflow-hidden group">
+              <div className="absolute inset-0 bg-teal-500/5 blur-[100px] group-hover:bg-teal-500/10 transition-all rounded-[3rem]"></div>
+              <ShieldAlert size={64} className="mx-auto text-teal-400 mb-8 relative z-10 animate-pulse" />
+              <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6 relative z-10">{antiTerrorData.title}</h2>
+              <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed relative z-10">{antiTerrorData.goal.desc}</p>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-3 relative z-10">
+                {antiTerrorData.goal.purpose.map((p, i) => (
+                  <span key={i} className="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-lg text-xs font-black uppercase tracking-widest border border-teal-500/20">{p}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Important Legal Note */}
+            <div className="p-8 bg-red-950/30 border-l-4 border-red-500 rounded-2xl flex items-start gap-4 shadow-xl">
+              <ShieldAlert className="text-red-500 shrink-0 mt-1" />
+              <div>
+                <h3 className="text-red-400 font-black uppercase tracking-widest text-sm mb-2">Legal Limitation Summary</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">{antiTerrorData.goal.important}</p>
+              </div>
+            </div>
+
+            {/* Architecture & Stack Grid */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Architecture */}
+              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
+                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Architecture</h3>
+                <div className="space-y-8">
+                  {antiTerrorData.architecture.map((arch, i) => (
+                    <div key={i}>
+                      <h4 className="text-teal-400 font-black uppercase tracking-widest text-sm mb-3">{arch.title}</h4>
+                      <ul className="space-y-2">
+                        {arch.items.map((item, j) => (
+                          <li key={j} className="flex items-start gap-3 text-slate-400 text-sm">
+                            <Binary size={14} className="text-teal-500/50 mt-1 shrink-0" /> <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Technologies Stack */}
+              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
+                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Tech Stack & Cloud</h3>
+                <div className="grid gap-6">
+                  {antiTerrorData.techStack.map((tech, i) => (
+                    <div key={i} className="p-5 bg-white/5 rounded-2xl border border-white/5">
+                      <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-2">{tech.category}</h4>
+                      <p className="text-slate-300 text-sm font-light">{tech.items}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Hardware Components */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {antiTerrorData.components.map((comp, i) => (
+                <div key={i} className="p-10 bg-slate-950 border border-white/5 rounded-[3rem] hover:border-indigo-500/40 transition-all group relative overflow-hidden flex flex-col h-full">
+                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-all" />
+                  <Bot size={32} className="text-indigo-400 mb-6 relative z-10" />
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-2 relative z-10">{comp.title}</h3>
+                  <p className="text-[10px] text-slate-500 font-black tracking-widest uppercase mb-6 pb-4 border-b border-white/10 relative z-10">{comp.models}</p>
+
+                  <div className="space-y-6 relative z-10 flex-grow">
+                    {comp.capabilities && (
+                      <div>
+                        <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Capabilities</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {comp.capabilities.map((cap, j) => (
+                            <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{cap}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {comp.aiModels && (
+                      <div>
+                        <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">AI Models Onboard</h4>
+                        <ul className="space-y-2">
+                          {comp.aiModels.map((ai, j) => (
+                            <li key={j} className="text-xs text-slate-400 flex items-center gap-2"><Zap size={12} className="text-indigo-500" /> {ai}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {comp.features && (
+                      <div>
+                        <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Robotic Features</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {comp.features.map((feat, j) => (
+                            <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{feat}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* AI Intelligence Modules */}
+            <div className="bg-slate-950/50 p-10 md:p-14 border border-white/5 rounded-[3rem]">
+              <h3 className="text-3xl font-black text-white uppercase italic mb-10 flex items-center gap-4"><BrainCircuit className="text-purple-500" /> Neural Detection Modules</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                {antiTerrorData.intelligenceModules.map((module, i) => (
+                  <div key={i} className="p-6 bg-slate-900/60 rounded-3xl border border-white/5 hover:border-purple-500/30 transition-all flex flex-col h-full">
+                    <h4 className="text-lg font-black text-white uppercase leading-tight mb-4">{module.title}</h4>
+                    <ul className="space-y-3 mb-6 flex-grow">
+                      {module.items.map((item, j) => (
+                        <li key={j} className="text-xs text-slate-400 flex items-start gap-2"><Activity size={12} className="text-purple-500 mt-0.5 shrink-0" /> {item}</li>
+                      ))}
+                    </ul>
+                    {(module.models || module.dataset) && (
+                      <div className="mt-auto pt-4 border-t border-white/5">
+                        <span className="text-[9px] text-purple-400 font-black uppercase tracking-widest block mb-1">{module.models ? 'Models Used' : 'Dataset'}</span>
+                        <span className="text-xs text-slate-500 font-medium">{module.models || module.dataset}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Legal & Deployment Split */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40">
+                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{antiTerrorData.legalHandling.title}</h3>
+
+                <div className="space-y-8">
+                  <div>
+                    <h4 className="text-green-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><CheckCircle2 size={16} /> Allowed Operations</h4>
+                    <ul className="space-y-3">
+                      {antiTerrorData.legalHandling.use.map((item, i) => (
+                        <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-green-500 rounded-full shrink-0" /> {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-red-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><X size={16} /> Strictly Prohibited</h4>
+                    <ul className="space-y-3">
+                      {antiTerrorData.legalHandling.never.map((item, i) => (
+                        <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" /> {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
+                  <h3 className="text-xl font-black text-white uppercase italic mb-6">High Priority Deployment Zones</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {antiTerrorData.deploymentAreas.map((area, i) => (
+                      <span key={i} className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs font-bold uppercase tracking-wider">{area}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
+                  <h3 className="text-xl font-black text-white uppercase italic mb-6">Risk Scoring & Action Matrix</h3>
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    {antiTerrorData.riskScoring.map((score, i) => (
+                      <div key={i} className="p-3 bg-white/5 rounded-lg text-center border border-white/5 text-xs text-slate-400 font-medium">{score}</div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-[10px] text-red-500 font-black uppercase tracking-widest w-full mb-1">Automated Actions on High Threshold</span>
+                    {antiTerrorData.riskActions.map((action, i) => (
+                      <span key={i} className="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-md text-[10px] uppercase font-bold tracking-wider">{action}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Info Panels */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
+                <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><Lock size={14} className="inline mr-2" /> Security Layer</h4>
+                <ul className="space-y-2">
+                  {antiTerrorData.securityLayer.map((sec, i) => (
+                    <li key={i} className="text-xs text-slate-400">• {sec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
+                <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><ShieldCheck size={14} className="inline mr-2" /> Ethical Requirements</h4>
+                <ul className="space-y-2">
+                  {antiTerrorData.requirements.map((req, i) => (
+                    <li key={i} className="text-xs text-slate-400">• {req}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="p-6 bg-gradient-to-br from-teal-900/50 to-slate-900/40 rounded-[2rem] border border-teal-500/20 md:col-span-2 lg:col-span-1">
+                <h4 className="text-white font-black uppercase tracking-widest text-xs mb-4"><Globe size={14} className="inline mr-2" /> Startup Potential</h4>
+                <div className="flex flex-wrap gap-2">
+                  {antiTerrorData.startup.map((st, i) => (
+                    <span key={i} className="px-3 py-1.5 bg-teal-500/20 text-teal-300 rounded-lg text-[10px] font-bold uppercase tracking-wider">{st}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
           </div>
         )}
 
