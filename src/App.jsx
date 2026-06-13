@@ -102,9 +102,9 @@ const App = () => {
               onClick={handleContact}
               onMouseEnter={() => setCursorType('pointer')}
               onMouseLeave={() => setCursorType('default')}
-              className="hidden md:flex bg-white text-black px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+              className="hidden md:flex bg-white text-black px-6 py-2.5 rounded-full text-[18px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)]"
             >
-              Secure Hire <Sparkles size={12} className="ml-2 inline" />
+              Secure Hire <Sparkles size={18} className="ml-2 inline" />
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -152,7 +152,7 @@ const App = () => {
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div>
                 <div className="inline-flex px-6 py-2 bg-black border border-white/10 rounded-full text-[10px] font-black text-blue-400 tracking-[0.3em] uppercase mb-10">
-                  <Binary size={14} className="mr-2" /> established 2013
+                  <Binary size={18} className="mr-2" /> established 2009
                 </div>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tighter">
                   WE BUILD <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600">THE FUTURE.</span>
@@ -171,13 +171,43 @@ const App = () => {
                   {contactData.bio}
                 </p>
               </div>
+
               <div className="relative h-[400px] hidden lg:block">
                 <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between hover:border-blue-500 transition-all rotate-3">
-                  <Zap size={40} className="text-blue-500 animate-pulse" />
-                  <div className="text-6xl font-black text-white italic leading-none">AGENTIC <br /> DESIGN.</div>
-                  <div className="flex items-center gap-3 text-xs text-green-500 font-black tracking-widest"><div className="w-2 h-2 bg-green-500 rounded-full animate-ping" /> STATUS: MISSION READY</div>
+
+                  {/* Top Icon / Logo */}
+                  <div className="flex items-center justify-between">
+                    <img
+                      src="/vite.svg"
+                      alt="Vite Logo"
+                      className="w-100 h-100 object-contain"
+                    />
+
+                    <Zap size={40} className="text-blue-500 animate-pulse" />
+                  </div>
+
+                  {/* Main Text */}
+                  <div className="text-6xl font-black text-white italic leading-none">
+                    MURTUZA KHALID <br /> AGENTIC DESIGN.
+                  </div>
+
+                  {/* Status */}
+                  <div className="flex items-center gap-3 text-xs text-green-500 font-black tracking-widest">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
+                    STATUS: MISSION READY
+                  </div>
+
                 </div>
               </div>
+
+
+
+
+
+
+
+
+
             </div>
           </div>
         )}
@@ -595,18 +625,16 @@ const App = () => {
       <footer className="relative z-10 border-t border-white/5 bg-black pt-20 pb-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
-            <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter mb-2">Murtuza.dev</h2>
-            <p className="text-[9px] text-slate-600 uppercase tracking-[0.5em] font-black">PRECISION ENGINEERED SOLUTIONS</p>
+            <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter mb-2">Murtuza HIGH LEVEL ARCHITECT / DEVELOPER</h2>
+            <p className="text-[12px] text-cyan-400 uppercase tracking-[0.5em] font-black">PRECISION ENGINEERED SOLUTIONS</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={handleContact}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black text-[10px] uppercase tracking-widest transition-all flex items-center gap-2"
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black text-[18px] uppercase tracking-widest transition-all flex items-center gap-2"
             >
-              Get in Touch <MessageSquare size={14} />
+              Get in Touch <MessageSquare size={24} />
             </button>
-            <a href="#" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-blue-600 transition-all text-white"><Linkedin size={18} /></a>
-            <a href="#" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-slate-800 transition-all text-white"><Github size={18} /></a>
           </div>
         </div>
       </footer>
