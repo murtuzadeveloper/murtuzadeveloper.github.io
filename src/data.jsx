@@ -10,6 +10,7 @@ import {
 
 export const tabs = [
     { name: 'Contact', icon: <Phone size={18} />, color: 'blue' },
+    { name: 'Projects', icon: <Cpu size={18} />, color: 'cyan' },
     { name: 'Education', icon: <GraduationCap size={18} />, color: 'yellow' },
     { name: 'Experience', icon: <Briefcase size={18} />, color: 'indigo' },
     { name: 'Skills', icon: <Code2 size={18} />, color: 'cyan' },
@@ -844,3 +845,472 @@ export const antiTerrorData = {
     requirements: ["Universal Act for peace", "Data privacy laws", "Human rights regulations", "Judicial oversight"],
     startup: ["Government contract", "Smart city security solution", "SaaS AI monitoring platform", "Export to Middle East"]
 };
+
+export const projectsData = [
+    {
+        id: 'autonomous-ai-engineer',
+        number: '01',
+        title: 'Autonomous AI Software Engineer',
+        tagline: 'Multi-agent autonomous software delivery pipeline from spec to cloud deployment',
+        category: 'Agentic AI',
+        color: 'cyan',
+        description: 'An end-to-end autonomous AI engineering platform where specialized agents collaborate in an orchestrated loop to turn natural language requirements into tested, secured, containerized, and deployed applications.',
+        workflowType: 'sequential-loop',
+        workflowSteps: [
+            { step: '01', role: 'Product Manager Agent', action: 'Requirement Analysis & User Story Extraction', icon: 'Bot' },
+            { step: '02', role: 'Architect Agent', action: 'System Design, Schema & API Contract Generation', icon: 'Workflow' },
+            { step: '03', role: 'Developer Agent', action: 'Full-Stack Code Synthesis & AST Verification', icon: 'Code2' },
+            { step: '04', role: 'Code Review Agent', action: 'Linter, Style & Pattern Correctness Audit', icon: 'CheckCircle2' },
+            { step: '05', role: 'QA Agent', action: 'Automated Test Generation & Regression Suites', icon: 'Activity' },
+            { step: '06', role: 'Security Agent', action: 'SAST, Secrets Detection & Dependency Scan', icon: 'ShieldAlert' },
+            { step: '07', role: 'DevOps Agent', action: 'Dockerfile, Kubernetes Manifests & CI/CD Pipelines', icon: 'Layers' },
+            { step: '08', role: 'Cloud Deployment', action: 'Live Container Rollout & Health Probing', icon: 'Globe' }
+        ],
+        features: [
+            'Requirement analysis & functional decomposition',
+            'Architecture generation with Mermaid / OpenAPI specs',
+            'Multi-file code generation with AST validation',
+            'Autonomous repository & branch management',
+            'Automated unit, integration & regression testing',
+            'Continuous peer code review & refactoring loop',
+            'Automated security scanning & SBOM generation',
+            'Self-updating documentation & API catalogs',
+            'Docker multi-stage builds & container optimization',
+            'Automated GitHub Actions CI/CD pipelines',
+            'Human-in-the-loop approval checkpoints',
+            'Long-term agent episodic memory & vector state',
+            'RAG over project documentation & codebases'
+        ],
+        techStack: ['Python', 'LangGraph', 'CrewAI', 'FastAPI', 'Docker', 'Kubernetes', 'Qdrant', 'GitHub Actions', 'Claude 3.5 Sonnet', 'GPT-4o'],
+        schema: `User Requirement
+       ↓
+Product Manager Agent
+       ↓
+Architect Agent
+       ↓
+Developer Agent
+       ↓
+Code Review Agent
+       ↓
+QA Agent
+       ↓
+Security Agent
+       ↓
+DevOps Agent
+       ↓
+Docker / Cloud Deployment`
+    },
+    {
+        id: 'enterprise-multi-agent-platform',
+        number: '02',
+        title: 'Enterprise Multi-Agent Business Platform',
+        tagline: 'Orchestrated AI workforce for cross-department enterprise autonomy',
+        category: 'Enterprise AI',
+        color: 'purple',
+        description: 'A centralized multi-tenant agentic operating system where business departments (Sales, Finance, HR) run specialized agent clusters coordinated by an intelligent AI Orchestrator with enterprise governance.',
+        workflowType: 'hub-spoke',
+        workflowSteps: [
+            { step: 'Hub', role: 'AI Orchestrator', action: 'Intent Routing, Task Delegation & Context Sharing', icon: 'BrainCircuit' },
+            { step: 'Node A', role: 'Sales Agent', action: 'CRM Automation, Lead Scoring & Email Outreach', icon: 'MessageSquare' },
+            { step: 'Node B', role: 'Finance Agent', action: 'Report Generation, DB Reconciliation & Anomaly Flagging', icon: 'BarChart3' },
+            { step: 'Node C', role: 'HR Agent', action: 'Document Ingestion, Policy Search & Onboarding Workflows', icon: 'Briefcase' }
+        ],
+        capabilities: [
+            'Read and understand complex enterprise documents (PDF, DOCX, CSV)',
+            'Analyze tabular financial data and live database streams',
+            'Generate compliant business reports with executive summaries',
+            'Semantic search across proprietary internal knowledge bases',
+            'Execute bidirectional tool calling and external API integrations',
+            'Coordinate complex cross-departmental multi-agent workflows',
+            'Inter-agent messaging via asynchronous event bus',
+            'Enforce human-in-the-loop approval workflows for high-stakes actions'
+        ],
+        features: [
+            'Agentic AI orchestrator with dynamic planning',
+            'Hierarchical multi-agent architecture',
+            'Fine-grained Role-Based Access Control (RBAC)',
+            'Enterprise OAuth 2.0 & SAML SSO integration',
+            'REST, GraphQL & gRPC API integration layer',
+            'Event-driven architecture powered by Kafka / RabbitMQ',
+            'Background worker queues (Celery / BullMQ)',
+            'Real-time status updates over WebSockets',
+            'Immutable audit logging & compliance tracing',
+            'Strict multi-tenant workspace isolation'
+        ],
+        techStack: ['Python / TypeScript', 'LangChain', 'FastAPI', 'WebSockets', 'Kafka', 'Redis', 'PostgreSQL', 'Docker', 'OAuth 2.0', 'OpenAI'],
+        schema: `                    AI Orchestrator
+                           │
+       ┌───────────────────┼──────────────────┐
+       ↓                   ↓                  ↓
+   Sales Agent        Finance Agent       HR Agent
+       │                   │                  │
+       ↓                   ↓                  ↓
+ CRM / Email          Reports / DB       Documents`
+    },
+    {
+        id: 'ai-saas-platform-builder',
+        number: '03',
+        title: 'AI-Powered SaaS Platform Builder',
+        tagline: 'Instant mini AI SaaS factory turning single prompts into complete software products',
+        category: 'AI Factory',
+        color: 'emerald',
+        description: 'An autonomous SaaS generator that transforms high-level product descriptions (e.g. "Create an appointment-management SaaS for dentists") into fully functional, customizable multi-tenant applications with databases, authentication, dashboards, and deployment configs.',
+        workflowType: 'generator-pipeline',
+        examplePrompt: 'Create an appointment-management SaaS for dentists.',
+        generatedArtifacts: [
+            { name: 'Database Schema', desc: 'Normalized PostgreSQL / Prisma models with relations and indexing', icon: 'Database' },
+            { name: 'Backend APIs', desc: 'Secure REST & GraphQL endpoints with validation & middleware', icon: 'Server' },
+            { name: 'Frontend UI', desc: 'Responsive, accessible modern React / Next.js interface with Tailwind', icon: 'Layers' },
+            { name: 'Authentication', desc: 'Multi-tenant auth, session management, and RBAC guards', icon: 'Lock' },
+            { name: 'Admin Dashboard', desc: 'Analytics charts, user management, and tenant metrics', icon: 'BarChart3' },
+            { name: 'Documentation', desc: 'Auto-generated OpenAPI Swagger specs & onboarding guides', icon: 'Terminal' },
+            { name: 'Automated Tests', desc: 'Unit, integration, and E2E testing suite with mock seed data', icon: 'CheckCircle2' },
+            { name: 'Docker & Cloud', desc: 'Production Dockerfile, Compose, and Kubernetes Helm charts', icon: 'Globe' }
+        ],
+        features: [
+            'Prompt-to-full-stack software generation',
+            'Interactive live sandbox preview & code modifier',
+            'Automated database migrations & relational schema synthesis',
+            'Secure multi-tenant customer separation',
+            'Stripe subscription billing & webhook integration',
+            'Instant Git repository scaffolding & deployment to Vercel/AWS'
+        ],
+        techStack: ['Next.js', 'React', 'Node.js / FastAPI', 'Prisma ORM', 'PostgreSQL', 'Docker', 'Stripe API', 'Tailwind CSS', 'Claude 3.5 Sonnet'],
+        schema: `Prompt: "Create an appointment-management SaaS for dentists."
+  ↓
+┌─────────────────────────────────────────────────────────────┐
+│ Database Schema │ Backend APIs │ Frontend UI │ Auth & RBAC   │
+├─────────────────────────────────────────────────────────────┤
+│ Admin Dashboard │ API Docs     │ Test Suite  │ Docker/Deploy │
+└─────────────────────────────────────────────────────────────┘
+  ↓
+Live Multi-Tenant SaaS Platform`
+    },
+    {
+        id: 'cloud-native-ecommerce-microservices',
+        number: '04',
+        title: 'Cloud-Native E-Commerce Microservices',
+        tagline: 'High-throughput event-driven distributed system for enterprise commerce',
+        category: 'Microservices',
+        color: 'blue',
+        description: 'A production-grade distributed microservices architecture implementing CQRS, Saga orchestration, asynchronous messaging via Apache Kafka, and distributed state persistence across isolated datastores.',
+        workflowType: 'distributed-gateway',
+        workflowSteps: [
+            { step: 'Edge', role: 'API Gateway', action: 'Reverse Proxy, Rate Limiting & Auth Validation', icon: 'Globe' },
+            { step: 'Core 1', role: 'User Service', action: 'Identity, Profile & JWT Management', icon: 'Lock' },
+            { step: 'Core 2', role: 'Product Service', action: 'Catalog, Inventory & Elastic Search', icon: 'Layers' },
+            { step: 'Core 3', role: 'Order Service', action: 'Saga Coordinator & Checkout Pipeline', icon: 'Workflow' },
+            { step: 'Broker', role: 'Kafka Event Bus', action: 'Distributed Event Streaming & Topic Routing', icon: 'Activity' },
+            { step: 'Async 1', role: 'Payment Service', action: 'Stripe Gateway & Idempotent Settlements', icon: 'Zap' },
+            { step: 'Async 2', role: 'Notification Service', action: 'Transactional Email, SMS & Push Dispatches', icon: 'MessageSquare' },
+            { step: 'Async 3', role: 'Analytics Service', action: 'Clickstream Tracking & Real-Time Aggregation', icon: 'BarChart3' }
+        ],
+        features: [
+            'API Gateway with JWT authentication, throttling & SSL termination',
+            'Decoupled microservices architecture with independent databases',
+            'Asynchronous event-driven messaging with Apache Kafka',
+            'Distributed transactions via the Saga Orchestration pattern',
+            'PostgreSQL relational persistence with connection pooling',
+            'Redis distributed caching & session clustering',
+            'OpenTelemetry distributed tracing (Jaeger) and Prometheus metrics',
+            'Resilience patterns: Circuit Breakers, Retries, and Fallbacks',
+            'Dockerized container topology deployed via Kubernetes Helm'
+        ],
+        techStack: ['Node.js / Go', 'Apache Kafka', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'Envoy Gateway', 'Prometheus', 'Grafana'],
+        schema: `                    API Gateway
+                         │
+       ┌─────────────────┼─────────────────┐
+       ↓                 ↓                 ↓
+   User Service     Product Service    Order Service
+       │                 │                 │
+       └────────────┬────┴────────────┬─────┘
+                    ↓                 ↓
+                 Kafka            PostgreSQL
+                    │
+          ┌─────────┼─────────┐
+          ↓         ↓         ↓
+      Payment   Notification  Analytics`
+    },
+    {
+        id: 'realtime-collaboration-platform',
+        number: '05',
+        title: 'Real-Time Collaboration Platform',
+        tagline: 'Next-gen hybrid workspace combining Slack, Google Docs, Notion, and Discord',
+        category: 'Real-Time Systems',
+        color: 'indigo',
+        description: 'A unified real-time collaboration environment featuring conflict-free multi-user document editing, instant low-latency messaging, voice/video conferencing, and background AI meeting summarization.',
+        workflowType: 'realtime-mesh',
+        features: [
+            'Real-time instant messaging with channel hierarchies & threads',
+            'Live presence detection and user heartbeat status',
+            'Real-time typing indicators with debounce optimization',
+            'Secure multi-format file sharing with CDN streaming',
+            'Instant multi-channel push & desktop notifications',
+            'Low-latency voice & video rooms powered by WebRTC',
+            'Conflict-free collaborative rich text editing using CRDTs (Yjs)',
+            'High-definition screen sharing with low bandwidth overhead',
+            'Blazing fast full-text semantic search across messages & documents',
+            'Automated AI meeting transcription & action-item summaries'
+        ],
+        techStack: ['React', 'Node.js', 'WebSockets', 'WebRTC (LiveKit)', 'CRDTs (Yjs)', 'Redis Pub/Sub', 'PostgreSQL', 'Tailwind CSS', 'OpenAI Whisper'],
+        schema: `┌─────────────────────────────────────────────────────────────┐
+│               Real-Time Collaboration Mesh                  │
+├─────────────────┬─────────────────┬─────────────────────────┤
+│ Messaging Hub   │ Presence & Chat │ Voice / Video (WebRTC)  │
+├─────────────────┼─────────────────┼─────────────────────────┤
+│ Docs (CRDT/Yjs) │ Screen Sharing  │ AI Meeting Summarizer   │
+└─────────────────┴─────────────────┴─────────────────────────┘`
+    },
+    {
+        id: 'ai-data-analyst-bi-agent',
+        number: '06',
+        title: 'AI Data Analyst & BI Agent',
+        tagline: 'Autonomous natural-language-to-insights engine for enterprise data lakes',
+        category: 'Data & Analytics',
+        color: 'sky',
+        description: 'An intelligent conversational data scientist that connects directly to relational databases and cloud data warehouses, automatically translates human business questions into optimized SQL, executes analytics, generates charts, and explains key findings.',
+        workflowType: 'analytics-pipeline',
+        exampleQuery: 'Show me why revenue decreased last quarter.',
+        workflowSteps: [
+            { step: '01', role: 'User Question', action: '"Show me why revenue decreased last quarter."', icon: 'MessageSquare' },
+            { step: '02', role: 'Intent Analysis', action: 'Extract Metrics, Dimensions & Time Window Constraints', icon: 'BrainCircuit' },
+            { step: '03', role: 'Database Discovery', action: 'Inspect Schema, Indexes, Foreign Keys & Table Catalogs', icon: 'Database' },
+            { step: '04', role: 'SQL Generation', action: 'Synthesize Optimized Aggregations, Joins & Filters', icon: 'Code2' },
+            { step: '05', role: 'SQL Validation', action: 'Syntax Safety Checking, Read-Only Guardrails & Cost Estimation', icon: 'ShieldCheck' },
+            { step: '06', role: 'Query Execution', action: 'Run on Target Database (PostgreSQL / Snowflake / DuckDB)', icon: 'Activity' },
+            { step: '07', role: 'Statistical Analysis', action: 'Anomaly Detection, Variance Calculations & Trend Profiling', icon: 'BarChart3' },
+            { step: '08', role: 'Visualization', action: 'Generate Interactive Plotly / ECharts Charts & Graphs', icon: 'Layers' },
+            { step: '09', role: 'Business Explanation', action: 'Deliver Actionable Plain-English Executive Insights', icon: 'Zap' }
+        ],
+        features: [
+            'Natural-language-to-SQL synthesis with high accuracy',
+            'Automatic interactive visualization & chart generation',
+            'Automated statistical data profiling & schema discovery',
+            'Statistical anomaly detection & trend deviation alerts',
+            'Time-series forecasting & predictive modeling',
+            'Regression, correlation & distribution analysis',
+            'Automated executive summary & exportable PDF reports',
+            'Direct Excel / CSV file ingestion & spreadsheet analysis',
+            'Universal database connectors (PostgreSQL, MySQL, Snowflake, BigQuery)',
+            'Conversational memory for iterative data exploration'
+        ],
+        techStack: ['Python', 'DuckDB', 'Pandas', 'SQLAlchemy', 'Plotly', 'FastAPI', 'Streamlit / React', 'PostgreSQL', 'Snowflake', 'GPT-4o'],
+        schema: `Question
+   ↓
+Intent Analysis
+   ↓
+Database Discovery
+   ↓
+SQL Generation
+   ↓
+SQL Validation
+   ↓
+Query Execution
+   ↓
+Statistical Analysis
+   ↓
+Visualization
+   ↓
+Business Explanation`
+    },
+    {
+        id: 'enterprise-rag-intelligence-system',
+        number: '07',
+        title: 'Enterprise RAG Knowledge Intelligence System',
+        tagline: 'Multi-source hybrid search & reranked question-answering with verifiable citations',
+        category: 'Enterprise RAG',
+        color: 'teal',
+        description: 'An enterprise-grade Knowledge Intelligence System that ingests multi-format documentation, applies chunking & metadata enrichment, executes hybrid vector+lexical search with Cross-Encoder reranking, and generates hallucinations-free answers with precise citations.',
+        workflowType: 'rag-pipeline',
+        supportedSources: ['PDF Reports', 'DOCX Docs', 'PPTX Slides', 'CSV / Tabular', 'Web Pages', 'Git Repositories', 'Database Records'],
+        workflowSteps: [
+            { step: '01', role: 'Ingestion', action: 'Extract text, structure & metadata from 7+ document formats', icon: 'Layers' },
+            { step: '02', role: 'Parsing & Chunking', action: 'Context-aware semantic boundary chunking', icon: 'Workflow' },
+            { step: '03', role: 'Metadata Extraction', action: 'Tag source, author, timestamp, department & access level', icon: 'Binary' },
+            { step: '04', role: 'Embeddings', action: 'Generate dense vectors via OpenAI / BAAI / Cohere', icon: 'BrainCircuit' },
+            { step: '05', role: 'Vector DB Indexing', action: 'Store & index in HNSW / IVF vector graphs', icon: 'Database' },
+            { step: '06', role: 'Hybrid Search', action: 'Merge dense semantic vectors with BM25 sparse keyword search', icon: 'Zap' },
+            { step: '07', role: 'Reranking', action: 'Reorder top-K chunks using Cross-Encoder models (Cohere / BGE)', icon: 'BarChart3' },
+            { step: '08', role: 'LLM Generation', action: 'Synthesize grounded answers strictly within retrieved context', icon: 'Bot' },
+            { step: '09', role: 'Answer + Citations', action: 'Return verified response with clickable source page citations', icon: 'CheckCircle2' }
+        ],
+        vectorDbComparison: [
+            { name: 'FAISS', type: 'In-Memory / Library', searchSpeed: 'Ultra Fast (<15ms)', scalability: 'Moderate', bestFor: 'High-speed local search & prototyping' },
+            { name: 'Qdrant', type: 'Distributed Engine', searchSpeed: 'Very Fast (<30ms)', scalability: 'High (Billions)', bestFor: 'Production payload filtering & scale' },
+            { name: 'Weaviate', type: 'Managed / OSS', searchSpeed: 'Fast (<40ms)', scalability: 'High', bestFor: 'Multi-modal & GraphQL enterprise search' },
+            { name: 'Pinecone', type: 'Fully Managed Cloud', searchSpeed: 'Fast (<45ms)', scalability: 'Infinite Serverless', bestFor: 'Zero-ops enterprise cloud deployment' }
+        ],
+        features: [
+            'Hybrid search combining Dense Semantic Vectors + Sparse BM25',
+            'Cross-Encoder reranking for top-tier relevance ranking',
+            'Multi-turn query rewriting and sub-query decomposition',
+            'Document-level access control & permission mapping (RBAC)',
+            'Exact source citation tracking with page/paragraph attribution',
+            'Automated RAG evaluation pipeline (Ragas / TruLens metrics)',
+            'Real-time hallucination detection & groundedness guardrails',
+            'Persistent conversation memory with semantic compression',
+            'Multi-tenant tenant-isolated vector indexing'
+        ],
+        techStack: ['Python', 'LangChain / LlamaIndex', 'Qdrant', 'Pinecone', 'FAISS', 'Weaviate', 'Cohere Rerank', 'FastAPI', 'React', 'OpenAI'],
+        schema: `Documents (PDF, DOCX, PPTX, CSV, Web, Git, DB)
+    ↓
+Parsing → Chunking → Metadata Extraction
+    ↓
+Embeddings → Vector Database
+    ↓
+Hybrid Search (Vector + BM25)
+    ↓
+Reranking (Cross-Encoder)
+    ↓
+LLM Grounded Synthesis
+    ↓
+Answer + Verified Citations`
+    },
+    {
+        id: 'devsecops-ai-security-platform',
+        number: '08',
+        title: 'DevSecOps AI Security Platform',
+        tagline: 'Automated repository & CI/CD security intelligence with AI auto-remediation',
+        category: 'DevSecOps',
+        color: 'red',
+        description: 'An automated Shift-Left security platform that deeply analyzes Git repositories and CI/CD pipelines across SAST, SCA, Secrets, Containers, and IaC, employing AI to contextualize risks and generate automated code remediation PRs.',
+        workflowType: 'security-matrix',
+        scanningEngines: [
+            { name: 'SAST', label: 'Static Application Security Testing', desc: 'Analyzes source code for OWASP Top 10, SQLi, XSS, and dangerous patterns', icon: 'Code2' },
+            { name: 'SCA', label: 'Software Composition Analysis', desc: 'Detects vulnerable dependencies, outdated packages & license violations', icon: 'Layers' },
+            { name: 'Secrets Detection', label: 'Credential & Token Protection', desc: 'Finds exposed API keys, private certificates, tokens & passwords in commits', icon: 'Lock' },
+            { name: 'Container Security', label: 'Image & Docker Vulnerability Scan', desc: 'Inspects base images, OS packages & misconfigurations (Trivy / Clair)', icon: 'Globe' },
+            { name: 'IaC Security', label: 'Infrastructure as Code Audit', desc: 'Evaluates Terraform, CloudFormation, K8s manifests for security gaps', icon: 'Server' },
+            { name: 'API Security Testing', label: 'Endpoint Fuzzing & Auth Audits', desc: 'Validates API auth, rate limits, schema compliance & data leaks', icon: 'Activity' }
+        ],
+        features: [
+            'Automated Git repository & pull request security scanning',
+            'CI/CD pipeline security gates (fail build on critical CVEs)',
+            'Deep SAST static code analysis across multiple languages',
+            'SCA dependency scanning with CVE database cross-referencing',
+            'High-entropy secrets detection with zero false-positive filters',
+            'Container image vulnerability scanning & base-image patching',
+            'IaC Terraform, CloudFormation, and Kubernetes misconfiguration detection',
+            'OWASP Top 10 API security testing & parameter fuzzing',
+            'Software Bill of Materials (SBOM) generation (CycloneDX / SPDX)',
+            'Real-time unified vulnerability management dashboard',
+            'AI-generated remediation suggestions & automated fix Pull Requests',
+            'Executive security posture & compliance reports (SOC2, ISO 27001)'
+        ],
+        techStack: ['Python / Go', 'Trivy', 'Semgrep', 'Gitleaks', 'Checkov', 'FastAPI', 'Docker', 'Kubernetes', 'GitHub Actions', 'OpenAI'],
+        schema: `Git Repository
+      ↓
+CI/CD Pipeline
+      ↓
+ ┌────┼─────┬──────┐
+ ↓    ↓     ↓      ↓
+SAST SCA  Secrets  IaC
+ ↓    ↓     ↓      ↓
+ └────┴─────┴──────┘
+          ↓
+     AI Analyzer
+          ↓
+ Risk + Explanation
+          ↓
+ Remediation`
+    },
+    {
+        id: 'ai-qa-autonomous-testing-platform',
+        number: '09',
+        title: 'AI QA & Autonomous Testing Platform',
+        tagline: 'Autonomous test strategy, test synthesis, and execution engine from URL or repo',
+        category: 'QA & Testing',
+        color: 'yellow',
+        description: 'An autonomous QA engineering platform where users provide an application URL or GitHub repository, and an agent swarm automatically analyzes the architecture, synthesizes multi-layer test suites, executes them in headless browsers/APIs, and produces actionable failure reports.',
+        workflowType: 'qa-pipeline',
+        testSuiteTypes: [
+            { type: 'Unit Tests', desc: 'Component testing, mocking, stubs, code branch coverage', icon: 'Code2' },
+            { type: 'API Tests', desc: 'REST & GraphQL contract testing, edge response validation', icon: 'Zap' },
+            { type: 'Integration Tests', desc: 'Service interaction, database integrity, third-party mocks', icon: 'Workflow' },
+            { type: 'End-to-End Tests', desc: 'User flows, cross-browser automation with Playwright', icon: 'Globe' },
+            { type: 'Regression Tests', desc: 'Critical path assertions, visual regression, change impact tests', icon: 'Activity' },
+            { type: 'Accessibility Tests', desc: 'WCAG 2.1 compliance, screen reader compatibility, contrast checks', icon: 'CheckCircle2' },
+            { type: 'Performance Tests', desc: 'Load testing, response time percentiles (k6), stress scenarios', icon: 'BarChart3' }
+        ],
+        workflowSteps: [
+            { step: '01', role: 'Application Discovery', action: 'Crawl URL or parse repo to discover endpoints, UI flows & tech stack', icon: 'Globe' },
+            { step: '02', role: 'Test Planner Agent', action: 'Create optimal multi-layer test strategy & allocate scenarios', icon: 'BrainCircuit' },
+            { step: '03', role: 'Test Generator', action: 'Synthesize executable Playwright, Jest, PyTest & k6 scripts', icon: 'Code2' },
+            { step: '04', role: 'Execution Engine', action: 'Run tests in parallel headless browser grids & API runners', icon: 'Activity' },
+            { step: '05', role: 'Failure Analyzer', action: 'Analyze stack traces, DOM snapshots, network logs & identify root causes', icon: 'ShieldAlert' },
+            { step: '06', role: 'Bug Report Generation', action: 'Produce actionable Jira-compatible bug reports with reproduction steps & fixes', icon: 'CheckCircle2' }
+        ],
+        features: [
+            'Zero-configuration application discovery from URL or Git repo',
+            'Autonomous test strategy generation with coverage prioritization',
+            'Full-suite code generation: Unit, API, Integration, and E2E tests',
+            'Parallel browser execution using headless Playwright & Chromium',
+            'Visual regression testing with pixel-diff AI analysis',
+            'Automated accessibility auditing compliant with WCAG standards',
+            'Performance & load testing scenarios with k6 integration',
+            'AI-powered failure root-cause analyzer with code fix recommendations'
+        ],
+        techStack: ['TypeScript / Python', 'Playwright', 'Jest / PyTest', 'k6', 'Docker', 'FastAPI', 'React', 'Tailwind CSS', 'OpenAI'],
+        schema: `Application URL / Repository
+    ↓
+Application Discovery
+    ↓
+Test Planner Agent
+    ↓
+Test Generator
+    ↓
+Browser/API Execution
+    ↓
+Failure Analyzer
+    ↓
+Actionable Bug Report`
+    },
+    {
+        id: 'cloud-observability-aiops-platform',
+        number: '10',
+        title: 'Cloud Observability & AIOps Platform',
+        tagline: 'OpenTelemetry full-stack telemetry engine with AI incident correlation and root-cause analysis',
+        category: 'AIOps',
+        color: 'rose',
+        description: 'A Datadog / New Relic-class observability platform built on OpenTelemetry that ingests Metrics, Logs, Traces, and Events, correlates anomalies across distributed microservices, and utilizes AI to explain errors and propose automated remediation runbooks.',
+        workflowType: 'observability-pipeline',
+        telemetryPillars: [
+            { name: 'Metrics', desc: 'CPU, Memory, Latency, Error Rates, Request Throughput', icon: 'BarChart3' },
+            { name: 'Logs', desc: 'Structured application & system log streams with real-time tailing', icon: 'Terminal' },
+            { name: 'Traces', desc: 'Distributed request flows across microservices with waterfall spans', icon: 'Workflow' },
+            { name: 'Events', desc: 'Deployments, config changes, autoscaling & infrastructure events', icon: 'Activity' }
+        ],
+        aiCapabilities: [
+            { title: 'Detect Anomalies', desc: 'Find unusual patterns and alert on metric deviations before outages occur', icon: 'ShieldAlert' },
+            { title: 'Summarize Incidents', desc: 'Auto-generate executive and engineering incident summaries with timeline', icon: 'MessageSquare' },
+            { title: 'Correlate Logs & Traces', desc: 'Link related logs to distributed trace spans across services automatically', icon: 'Zap' },
+            { title: 'Explain Errors', desc: 'Translate cryptic stack traces and error codes into clear natural language', icon: 'BrainCircuit' },
+            { title: 'Identify Probable Causes', desc: 'Pinpoint root-cause deployments, database locks, or resource limits', icon: 'Bot' },
+            { title: 'Generate Incident Reports', desc: 'Produce comprehensive post-mortem reports with timeline and impact metrics', icon: 'CheckCircle2' },
+            { title: 'Suggest Remediation', desc: 'Recommend actionable runbooks, config rollbacks, and capacity adjustments', icon: 'Layers' }
+        ],
+        features: [
+            'OpenTelemetry unified collection & distributed instrumentation',
+            'Real-time streaming ingestion pipeline for high-volume telemetry',
+            'Time-series metric storage & distributed log indexing',
+            'Interactive distributed trace waterfall & service dependency map',
+            'Dynamic health dashboards for Kubernetes, VMs, and Cloud providers',
+            'AI-powered anomaly detection & intelligent alert deduplication',
+            'Automated root-cause analysis with correlated telemetry evidence',
+            'Automated remediation runbook execution & incident workflows'
+        ],
+        techStack: ['Go / Python', 'OpenTelemetry', 'ClickHouse / VictoriaMetrics', 'Kafka', 'Grafana', 'FastAPI', 'React', 'Docker', 'Kubernetes', 'GPT-4o'],
+        schema: `Metrics, Logs, Traces, Events
+        ↓
+OpenTelemetry Collector
+        ↓
+Stream Processing & Enrichment
+        ↓
+Time-Series & Log Storage
+        ↓
+Real-Time Dashboards
+        ↓
+AI Analysis Engine (Root Cause & Remediation)`
+    }
+];
+
