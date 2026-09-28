@@ -9,6 +9,8 @@ import {
   skillsData, servicesData, industriesData, aiSolutionsData,
   cyberSecurityData, aiSecurityData, antiTerrorData
 } from './data';
+import MatrixName, { MatrixRainBackground } from './components/MatrixName';
+import ProjectsTab from './components/ProjectsTab';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('Contact');
@@ -172,29 +174,67 @@ const App = () => {
                 </p>
               </div>
 
-              <div className="relative h-[400px] hidden lg:block">
-                <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 flex flex-col justify-between hover:border-blue-500 transition-all rotate-3">
+              <div className="relative min-h-[560px] sm:min-h-[640px] lg:h-[700px] w-full max-w-xl mx-auto lg:max-w-none block">
+                <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-3xl border border-emerald-500/20 rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] p-6 sm:p-8 lg:p-12 flex flex-col justify-between hover:border-emerald-500/60 transition-all duration-500 rotate-0 lg:rotate-3 overflow-hidden group shadow-[0_0_50px_rgba(16,185,129,0.1)] hover:shadow-[0_0_80px_rgba(16,185,129,0.25)]">
+                  {/* Matrix Rain Canvas Background */}
+                  <MatrixRainBackground opacity={0.25} color="#10b981" />
 
-                  {/* Top Icon / Logo */}
-                  <div className="flex items-center justify-between">
-                    <img
-                      src="/vite.svg"
-                      alt="Vite Logo"
-                      className="w-100 h-100 object-contain"
-                    />
+                  {/* Top Profile Photo & Status */}
+                  <div className="relative z-10 flex items-start justify-between gap-4 sm:gap-6">
 
-                    <Zap size={40} className="text-blue-500 animate-pulse" />
+                    {/* Profile Image */}
+                    <div className="relative group/avatar shrink-0">
+
+                      {/* Cyber Ambient Glow */}
+                      <div className="absolute -inset-2 sm:-inset-3 bg-gradient-to-r from-emerald-500/60 to-cyan-500/60 rounded-[1.5rem] sm:rounded-[2rem] blur-lg opacity-60 group-hover/avatar:opacity-100 transition-all duration-500" />
+
+                      {/* Image Container */}
+                      <div className="relative w-48 h-48 xs:w-56 xs:h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border-2 border-emerald-400/50 bg-slate-900 shadow-[0_0_40px_rgba(16,185,129,0.4)] group-hover/avatar:border-emerald-300 transition-all duration-500">
+
+                        <img
+                          src="/vite.svg"
+                          alt="Murtuza Khalid Saleem"
+                          className="w-full h-full object-cover object-top group-hover/avatar:scale-105 transition-transform duration-500"
+                        />
+
+                        {/* Matrix overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-emerald-400/10 pointer-events-none" />
+                      </div>
+
+                      {/* Online Status */}
+                      <span className="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 bg-emerald-500 border-2 sm:border-4 border-slate-900 rounded-full shadow-[0_0_15px_#10b981] animate-pulse" />
+
+                    </div>
+
+                    {/* Status */}
+                    <div className="flex flex-col items-end gap-2 sm:gap-3 shrink-0">
+                      <span className="text-[9px] sm:text-[10px] font-mono text-emerald-400 uppercase tracking-widest bg-emerald-950/70 border border-emerald-500/30 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.2)] flex items-center gap-1.5 sm:gap-2">
+                        <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" />
+                        SYS: ONLINE
+                      </span>
+
+                      <Zap
+                        size={28}
+                        className="text-emerald-400 animate-pulse drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]"
+                      />
+                    </div>
+
                   </div>
 
-                  {/* Main Text */}
-                  <div className="text-6xl font-black text-white italic leading-none">
-                    MURTUZA KHALID <br /> AGENTIC DESIGN.
+                  {/* Main Matrix Text */}
+                  <div className="relative z-10 text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-white italic leading-none my-3 sm:my-4">
+                    <MatrixName text="MURTUZA KHALID SALEEM" speed={40} revealDelay={3} />
                   </div>
 
-                  {/* Status */}
-                  <div className="flex items-center gap-3 text-xs text-green-500 font-black tracking-widest">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
-                    STATUS: MISSION READY
+                  {/* Status Bar */}
+                  <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 border-t border-white/5 pt-3 sm:pt-4">
+                    <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-emerald-400 font-mono font-black tracking-widest">
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-emerald-400 rounded-full animate-ping shadow-[0_0_10px_#34d399]" />
+                      STATUS: MISSION READY
+                    </div>
+                    <span className="text-[9px] sm:text-[10px] font-mono text-slate-500 tracking-widest uppercase">
+                      SEC_CLEARANCE: LVL_9
+                    </span>
                   </div>
 
                 </div>
@@ -212,7 +252,12 @@ const App = () => {
           </div>
         )}
 
-        {/* EDUCATION (Tab 2) */}
+        {/* PROJECTS (Tab) */}
+        {activeTab === 'Projects' && (
+          <ProjectsTab />
+        )}
+
+        {/* EDUCATION */}
         {activeTab === 'Education' && (
           <div className="animate-in fade-in duration-700 space-y-16">
             <div className="bg-slate-900/30 border border-white/5 p-10 rounded-[3rem] text-center hover:border-yellow-500/30 transition-all">
