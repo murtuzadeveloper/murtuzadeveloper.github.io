@@ -1,11 +1,10 @@
-version: '3.8'
 services:
   portfolio:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-app:latest
+    container_name: portfolio-container
     ports:
-      - "3000:3000"
-    volumes:
-      - ./src:/app/src
-    environment:
-      - NODE_ENV=production
+      - "3000:80"
     restart: unless-stopped
