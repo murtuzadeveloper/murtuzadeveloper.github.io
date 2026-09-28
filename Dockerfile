@@ -1,24 +1,34 @@
-# Use lightweight node image
-FROM node:22-alpine
+# Step 1: Build stage
+FROM node:22-alpine AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package configuration
 COPY package*.json ./
-RUN npm install
 
-# Copy project files
+# Install dependencies with retry settings
+RUN npm config set fetch-retries 5 \
+    && npm config set fetch-retry-mintimeout 20000 \
+    && npm config set fetch-retry-maxtimeout 120000 \
+    && (npm ci || npm install)
+
+# Copy source code and assets
 COPY . .
 
-# Build for production
+# Build production bundle
 RUN npm run build
 
-# Add a lightweight static server for serving the build
-RUN npm install -g serve
+# Step 2: Production stage
+FROM nginx:alpine
 
-# Expose port
-EXPOSE 3000
+# Copy custom Nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Start server
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Copy build artifacts from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx in foreground
+CMD ["nginx", "-g", "daemon off;"]
