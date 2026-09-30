@@ -148,6 +148,16 @@ const App = () => {
 
       <main className="relative z-10 pt-32 md:pt-40 pb-32 px-6 max-w-7xl mx-auto min-h-screen">
 
+
+
+
+
+
+
+
+
+
+
         {/* CONTACT & ABOUT (Tab 1) */}
         {activeTab === 'Contact' && (
           <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
@@ -174,14 +184,17 @@ const App = () => {
                 </p>
               </div>
 
+
+
+
+
               <div className="relative min-h-[560px] sm:min-h-[640px] lg:h-[700px] w-full max-w-xl mx-auto lg:max-w-none block">
                 <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-3xl border border-emerald-500/20 rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] p-6 sm:p-8 lg:p-12 flex flex-col justify-between hover:border-emerald-500/60 transition-all duration-500 rotate-0 lg:rotate-3 overflow-hidden group shadow-[0_0_50px_rgba(16,185,129,0.1)] hover:shadow-[0_0_80px_rgba(16,185,129,0.25)]">
                   {/* Matrix Rain Canvas Background */}
-                  <MatrixRainBackground opacity={0.25} color="#10b981" />
+                  <MatrixRainBackground opacity={1} color="#29e229ff" />
 
                   {/* Top Profile Photo & Status */}
                   <div className="relative z-10 flex items-start justify-between gap-4 sm:gap-6">
-
                     {/* Profile Image */}
                     <div className="relative group/avatar shrink-0">
 
@@ -193,32 +206,26 @@ const App = () => {
 
                         <img
                           src="/vite.svg"
-                          alt="Murtuza Khalid Saleem"
+                          alt="Murtuza KhalidSaleem"
                           className="w-full h-full object-cover object-top group-hover/avatar:scale-105 transition-transform duration-500"
                         />
 
                         {/* Matrix overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-emerald-400/10 pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/60 via-transparent to-emerald-400/10 pointer-events-none" />
+
+                        {/* SYS: ONLINE - Bottom of Image */}
+                        <div className="absolute bottom-3 left-3 right-3 flex justify-center z-20">
+                          <span className="text-[9px] sm:text-[10px] font-mono text-emerald-400 uppercase tracking-widest bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 px-3 py-1.5 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" />
+                            SYSTEM: ONLINE
+                          </span>
+                        </div>
                       </div>
-
-                      {/* Online Status */}
-                      <span className="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 bg-emerald-500 border-2 sm:border-4 border-slate-900 rounded-full shadow-[0_0_15px_#10b981] animate-pulse" />
-
                     </div>
-
-                    {/* Status */}
-                    <div className="flex flex-col items-end gap-2 sm:gap-3 shrink-0">
-                      <span className="text-[9px] sm:text-[10px] font-mono text-emerald-400 uppercase tracking-widest bg-emerald-950/70 border border-emerald-500/30 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.2)] flex items-center gap-1.5 sm:gap-2">
-                        <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" />
-                        SYS: ONLINE
-                      </span>
-
-                      <Zap
-                        size={28}
-                        className="text-emerald-400 animate-pulse drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]"
-                      />
-                    </div>
-
+                    <Zap
+                      size={28}
+                      className="text-emerald-400 animate-pulse drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]"
+                    />
                   </div>
 
                   {/* Main Matrix Text */}
@@ -242,430 +249,462 @@ const App = () => {
 
 
 
-
-
-
-
-
-
             </div>
           </div>
-        )}
+        )
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         {/* PROJECTS (Tab) */}
-        {activeTab === 'Projects' && (
-          <ProjectsTab />
-        )}
+        {
+          activeTab === 'Projects' && (
+            <ProjectsTab />
+          )
+        }
 
         {/* EDUCATION */}
-        {activeTab === 'Education' && (
-          <div className="animate-in fade-in duration-700 space-y-16">
-            <div className="bg-slate-900/30 border border-white/5 p-10 rounded-[3rem] text-center hover:border-yellow-500/30 transition-all">
-              <Award size={48} className="mx-auto text-yellow-500 mb-6" />
-              <h2 className="text-2xl md:text-4xl font-black text-white uppercase italic">{educationData.degree}</h2>
-              <p className="text-slate-400 mt-4 text-lg font-bold">{educationData.institution}</p>
-              <span className="inline-block mt-4 px-6 py-2 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-black tracking-widest uppercase">{educationData.date}</span>
-            </div>
+        {
+          activeTab === 'Education' && (
+            <div className="animate-in fade-in duration-700 space-y-16">
+              <div className="bg-slate-900/30 border border-white/5 p-10 rounded-[3rem] text-center hover:border-yellow-500/30 transition-all">
+                <Award size={48} className="mx-auto text-yellow-500 mb-6" />
+                <h2 className="text-2xl md:text-4xl font-black text-white uppercase italic">{educationData.degree}</h2>
+                <p className="text-slate-400 mt-4 text-lg font-bold">{educationData.institution}</p>
+                <span className="inline-block mt-4 px-6 py-2 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-black tracking-widest uppercase">{educationData.date}</span>
+              </div>
 
-            <div>
-              <h3 className="text-3xl font-black text-white italic uppercase mb-8 flex items-center gap-4"><Award className="text-blue-500" /> Google Badges & Certifications</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {googleBadges.map((b, i) => (
-                  <div key={i} className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-yellow-500/40 text-left group transition-all hover:bg-slate-900/80">
-                    <span className="text-[9px] text-yellow-500 uppercase tracking-widest font-black mb-4 block">{b.date}</span>
-                    <h4 className="text-lg font-black text-white leading-tight mb-4">{b.title}</h4>
-                    <p className="text-sm text-slate-500 font-light">{b.desc}</p>
-                  </div>
-                ))}
+              <div>
+                <h3 className="text-3xl font-black text-white italic uppercase mb-8 flex items-center gap-4"><Award className="text-blue-500" /> Google Badges & Certifications</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {googleBadges.map((b, i) => (
+                    <div key={i} className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-yellow-500/40 text-left group transition-all hover:bg-slate-900/80">
+                      <span className="text-[9px] text-yellow-500 uppercase tracking-widest font-black mb-4 block">{b.date}</span>
+                      <h4 className="text-lg font-black text-white leading-tight mb-4">{b.title}</h4>
+                      <p className="text-sm text-slate-500 font-light">{b.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )
+        }
 
         {/* EXPERIENCE (Tab 3) */}
-        {activeTab === 'Experience' && (
-          <div className="grid gap-6">
-            {experienceData.map((ex, i) => (
-              <div key={i} className="group bg-slate-900/20 backdrop-blur-md border border-white/5 p-8 md:p-10 rounded-[2.5rem] hover:border-indigo-500/30 transition-all animate-in slide-in-from-right-12" style={{ animationDelay: `${i * 100}ms` }}>
-                <div className="flex flex-col md:flex-row justify-between gap-6">
-                  <div className="flex items-center gap-6">
-                    <div className="min-w-[4rem] h-16 bg-white/5 rounded-2xl flex items-center justify-center text-indigo-400 group-hover:rotate-6 transition-all"><History size={28} /></div>
-                    <div>
-                      <h3 className="text-lg md:text-2xl font-black text-white uppercase italic leading-tight">{ex.role}</h3>
-                      <p className="text-xs md:text-sm font-bold text-slate-400 mt-2">{ex.company}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="px-4 py-2 bg-indigo-500/10 rounded-full text-[10px] font-black text-indigo-400 uppercase tracking-widest whitespace-nowrap">{ex.date}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* SKILLS (Tab 4) */}
-        {activeTab === 'Skills' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in duration-700">
-            {skillsData.map((cat, i) => (
-              <div key={i} className="p-8 md:p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-cyan-500/40 transition-all group">
-                <h3 className="text-xl md:text-2xl font-black text-white uppercase italic mb-6 border-b border-white/10 pb-4 group-hover:text-cyan-400 transition-colors">{cat.category}</h3>
-                <div className="space-y-4">
-                  {cat.skills.map(s => (
-                    <div key={s} className="flex items-start gap-3 text-sm text-slate-400 font-light leading-relaxed">
-                      <CheckCircle2 size={16} className="text-cyan-500 mt-0.5 shrink-0" />
-                      <span>{s}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* SERVICES (Tab 5) */}
-        {activeTab === 'Services' && (
-          <div className="grid md:grid-cols-3 gap-8 animate-in slide-in-from-bottom-8">
-            {servicesData.map((srv, i) => (
-              <div key={i} className="p-10 bg-slate-900/40 border border-white/5 rounded-[3rem] hover:bg-slate-900 hover:border-orange-500/50 transition-all">
-                <div className="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-500 mb-8"><Layers size={32} /></div>
-                <h3 className="text-2xl font-black text-white uppercase mb-6 leading-tight">{srv.title}</h3>
-                <ul className="space-y-4">
-                  {srv.points.map((p, j) => (
-                    <li key={j} className="text-sm text-slate-400 font-light flex items-start gap-2">
-                      <span className="text-orange-500 mt-1">•</span> {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* INDUSTRIES (Tab 6) */}
-        {activeTab === 'Industries' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in zoom-in-95">
-            {industriesData.map((ind, i) => (
-              <div key={i} className="p-8 md:p-12 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-emerald-500/40 transition-all group">
-                <h3 className="text-3xl font-black text-white uppercase italic mb-4 group-hover:text-emerald-400">{ind.title}</h3>
-                <p className="text-emerald-500 font-bold mb-8 text-sm uppercase tracking-widest">{ind.desc}</p>
-                <div className="space-y-4">
-                  {ind.details.map((d, j) => (
-                    <div key={j} className="flex items-start gap-3 text-slate-400 text-sm leading-relaxed">
-                      <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{d}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* AI SOLUTIONS (Tab 7) */}
-        {activeTab === 'AI Solutions' && (
-          <div className="grid lg:grid-cols-3 gap-8 animate-in fade-in">
-            {aiSolutionsData.map((ai, i) => (
-              <div key={i} className="p-10 bg-slate-950 border border-white/5 rounded-[3rem] relative overflow-hidden group hover:border-purple-500 transition-all flex flex-col h-full">
-                <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-600/10 blur-[80px] group-hover:scale-150 transition-all" />
-                <h3 className="text-4xl font-black text-white uppercase italic mb-2 relative z-10">{ai.title}</h3>
-                <p className="text-[10px] text-purple-400 font-black tracking-widest uppercase mb-8 pb-4 border-b border-white/10 relative z-10">{ai.subtitle}</p>
-                <div className="space-y-4 relative z-10 flex-grow">
-                  {ai.points.map((p, j) => (
-                    <div key={j} className="text-sm text-slate-400 font-light flex items-start gap-2">
-                      <Zap size={14} className="text-purple-500 mt-1 shrink-0" />
-                      <span>{p}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* CYBER SECURITY (Tab 8) */}
-        {activeTab === 'Cyber Security' && (
-          <div className="space-y-12 animate-in slide-in-from-left-8">
-            <div className="bg-red-950/20 border border-red-500/20 p-10 md:p-16 rounded-[3rem] text-center">
-              <ShieldAlert size={64} className="mx-auto text-red-500 mb-8" />
-              <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">{cyberSecurityData[0].title}</h2>
-              <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">{cyberSecurityData[0].desc}</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-red-500/40">
-                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{cyberSecurityData[1].title}</h3>
-                <ul className="space-y-6">
-                  {cyberSecurityData[1].list.map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 text-slate-400">
-                      <Lock size={20} className="text-red-500 shrink-0" /> <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-red-500/40">
-                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{cyberSecurityData[2].title}</h3>
-                <p className="text-slate-400 leading-relaxed text-lg">{cyberSecurityData[2].desc}</p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  {['Discover', 'Assess', 'Control', 'Report'].map(step => (
-                    <span key={step} className="px-4 py-2 bg-red-500/10 text-red-400 rounded-lg text-xs font-black uppercase tracking-widest">{step}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* AI SECURITY (Tab 9) */}
-        {activeTab === 'AI Security' && (
-          <div className="space-y-12 animate-in slide-in-from-right-8">
-            <div className="bg-rose-950/20 border border-rose-500/20 p-10 md:p-16 rounded-[3rem] text-center">
-              <Lock size={64} className="mx-auto text-rose-500 mb-8" />
-              <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">{aiSecurityData[0].title}</h2>
-              <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">{aiSecurityData[0].desc}</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-rose-500/40">
-                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{aiSecurityData[1].title}</h3>
-                <ul className="space-y-6">
-                  {aiSecurityData[1].list.map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 text-slate-400">
-                      <ShieldAlert size={20} className="text-rose-500 shrink-0" /> <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-rose-500/40">
-                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{aiSecurityData[2].title}</h3>
-                <p className="text-slate-400 leading-relaxed text-lg">{aiSecurityData[2].desc}</p>
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-white/5 rounded-xl text-center"><span className="block text-2xl font-black text-white">73%</span><span className="text-[9px] text-slate-500 uppercase tracking-widest">Breached AI Systems</span></div>
-                  <div className="p-4 bg-white/5 rounded-xl text-center"><span className="block text-2xl font-black text-white">82%</span><span className="text-[9px] text-slate-500 uppercase tracking-widest">Financial Prompt Injections</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* AGI ANTI-TERROR (Tab 10) */}
-        {activeTab === 'AGI Anti-Terror' && (
-          <div className="space-y-12 animate-in fade-in duration-700">
-            {/* Header */}
-            <div className="bg-teal-950/20 border border-teal-500/20 p-10 md:p-16 rounded-[3rem] text-center relative overflow-hidden group">
-              <div className="absolute inset-0 bg-teal-500/5 blur-[100px] group-hover:bg-teal-500/10 transition-all rounded-[3rem]"></div>
-              <ShieldAlert size={64} className="mx-auto text-teal-400 mb-8 relative z-10 animate-pulse" />
-              <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6 relative z-10">{antiTerrorData.title}</h2>
-              <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed relative z-10">{antiTerrorData.goal.desc}</p>
-
-              <div className="mt-8 flex flex-wrap justify-center gap-3 relative z-10">
-                {antiTerrorData.goal.purpose.map((p, i) => (
-                  <span key={i} className="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-lg text-xs font-black uppercase tracking-widest border border-teal-500/20">{p}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* Important Legal Note */}
-            <div className="p-8 bg-red-950/30 border-l-4 border-red-500 rounded-2xl flex items-start gap-4 shadow-xl">
-              <ShieldAlert className="text-red-500 shrink-0 mt-1" />
-              <div>
-                <h3 className="text-red-400 font-black uppercase tracking-widest text-sm mb-2">Legal Limitation Summary</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">{antiTerrorData.goal.important}</p>
-              </div>
-            </div>
-
-            {/* Architecture & Stack Grid */}
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Architecture */}
-              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
-                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Architecture</h3>
-                <div className="space-y-8">
-                  {antiTerrorData.architecture.map((arch, i) => (
-                    <div key={i}>
-                      <h4 className="text-teal-400 font-black uppercase tracking-widest text-sm mb-3">{arch.title}</h4>
-                      <ul className="space-y-2">
-                        {arch.items.map((item, j) => (
-                          <li key={j} className="flex items-start gap-3 text-slate-400 text-sm">
-                            <Binary size={14} className="text-teal-500/50 mt-1 shrink-0" /> <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Technologies Stack */}
-              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
-                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Tech Stack & Cloud</h3>
-                <div className="grid gap-6">
-                  {antiTerrorData.techStack.map((tech, i) => (
-                    <div key={i} className="p-5 bg-white/5 rounded-2xl border border-white/5">
-                      <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-2">{tech.category}</h4>
-                      <p className="text-slate-300 text-sm font-light">{tech.items}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Hardware Components */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {antiTerrorData.components.map((comp, i) => (
-                <div key={i} className="p-10 bg-slate-950 border border-white/5 rounded-[3rem] hover:border-indigo-500/40 transition-all group relative overflow-hidden flex flex-col h-full">
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-all" />
-                  <Bot size={32} className="text-indigo-400 mb-6 relative z-10" />
-                  <h3 className="text-2xl font-black text-white uppercase italic mb-2 relative z-10">{comp.title}</h3>
-                  <p className="text-[10px] text-slate-500 font-black tracking-widest uppercase mb-6 pb-4 border-b border-white/10 relative z-10">{comp.models}</p>
-
-                  <div className="space-y-6 relative z-10 flex-grow">
-                    {comp.capabilities && (
+        {
+          activeTab === 'Experience' && (
+            <div className="grid gap-6">
+              {experienceData.map((ex, i) => (
+                <div key={i} className="group bg-slate-900/20 backdrop-blur-md border border-white/5 p-8 md:p-10 rounded-[2.5rem] hover:border-indigo-500/30 transition-all animate-in slide-in-from-right-12" style={{ animationDelay: `${i * 100}ms` }}>
+                  <div className="flex flex-col md:flex-row justify-between gap-6">
+                    <div className="flex items-center gap-6">
+                      <div className="min-w-[4rem] h-16 bg-white/5 rounded-2xl flex items-center justify-center text-indigo-400 group-hover:rotate-6 transition-all"><History size={28} /></div>
                       <div>
-                        <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Capabilities</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {comp.capabilities.map((cap, j) => (
-                            <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{cap}</span>
-                          ))}
-                        </div>
+                        <h3 className="text-lg md:text-2xl font-black text-white uppercase italic leading-tight">{ex.role}</h3>
+                        <p className="text-xs md:text-sm font-bold text-slate-400 mt-2">{ex.company}</p>
                       </div>
-                    )}
-
-                    {comp.aiModels && (
-                      <div>
-                        <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">AI Models Onboard</h4>
-                        <ul className="space-y-2">
-                          {comp.aiModels.map((ai, j) => (
-                            <li key={j} className="text-xs text-slate-400 flex items-center gap-2"><Zap size={12} className="text-indigo-500" /> {ai}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {comp.features && (
-                      <div>
-                        <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Robotic Features</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {comp.features.map((feat, j) => (
-                            <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{feat}</span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    </div>
+                    <div className="flex items-center">
+                      <span className="px-4 py-2 bg-indigo-500/10 rounded-full text-[10px] font-black text-indigo-400 uppercase tracking-widest whitespace-nowrap">{ex.date}</span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
+          )
+        }
 
-            {/* AI Intelligence Modules */}
-            <div className="bg-slate-950/50 p-10 md:p-14 border border-white/5 rounded-[3rem]">
-              <h3 className="text-3xl font-black text-white uppercase italic mb-10 flex items-center gap-4"><BrainCircuit className="text-purple-500" /> Neural Detection Modules</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                {antiTerrorData.intelligenceModules.map((module, i) => (
-                  <div key={i} className="p-6 bg-slate-900/60 rounded-3xl border border-white/5 hover:border-purple-500/30 transition-all flex flex-col h-full">
-                    <h4 className="text-lg font-black text-white uppercase leading-tight mb-4">{module.title}</h4>
-                    <ul className="space-y-3 mb-6 flex-grow">
-                      {module.items.map((item, j) => (
-                        <li key={j} className="text-xs text-slate-400 flex items-start gap-2"><Activity size={12} className="text-purple-500 mt-0.5 shrink-0" /> {item}</li>
-                      ))}
-                    </ul>
-                    {(module.models || module.dataset) && (
-                      <div className="mt-auto pt-4 border-t border-white/5">
-                        <span className="text-[9px] text-purple-400 font-black uppercase tracking-widest block mb-1">{module.models ? 'Models Used' : 'Dataset'}</span>
-                        <span className="text-xs text-slate-500 font-medium">{module.models || module.dataset}</span>
+        {/* SKILLS (Tab 4) */}
+        {
+          activeTab === 'Skills' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in duration-700">
+              {skillsData.map((cat, i) => (
+                <div key={i} className="p-8 md:p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-cyan-500/40 transition-all group">
+                  <h3 className="text-xl md:text-2xl font-black text-white uppercase italic mb-6 border-b border-white/10 pb-4 group-hover:text-cyan-400 transition-colors">{cat.category}</h3>
+                  <div className="space-y-4">
+                    {cat.skills.map(s => (
+                      <div key={s} className="flex items-start gap-3 text-sm text-slate-400 font-light leading-relaxed">
+                        <CheckCircle2 size={16} className="text-cyan-500 mt-0.5 shrink-0" />
+                        <span>{s}</span>
                       </div>
-                    )}
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* SERVICES (Tab 5) */}
+        {
+          activeTab === 'Services' && (
+            <div className="grid md:grid-cols-3 gap-8 animate-in slide-in-from-bottom-8">
+              {servicesData.map((srv, i) => (
+                <div key={i} className="p-10 bg-slate-900/40 border border-white/5 rounded-[3rem] hover:bg-slate-900 hover:border-orange-500/50 transition-all">
+                  <div className="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-500 mb-8"><Layers size={32} /></div>
+                  <h3 className="text-2xl font-black text-white uppercase mb-6 leading-tight">{srv.title}</h3>
+                  <ul className="space-y-4">
+                    {srv.points.map((p, j) => (
+                      <li key={j} className="text-sm text-slate-400 font-light flex items-start gap-2">
+                        <span className="text-orange-500 mt-1">•</span> {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* INDUSTRIES (Tab 6) */}
+        {
+          activeTab === 'Industries' && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in zoom-in-95">
+              {industriesData.map((ind, i) => (
+                <div key={i} className="p-8 md:p-12 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-emerald-500/40 transition-all group">
+                  <h3 className="text-3xl font-black text-white uppercase italic mb-4 group-hover:text-emerald-400">{ind.title}</h3>
+                  <p className="text-emerald-500 font-bold mb-8 text-sm uppercase tracking-widest">{ind.desc}</p>
+                  <div className="space-y-4">
+                    {ind.details.map((d, j) => (
+                      <div key={j} className="flex items-start gap-3 text-slate-400 text-sm leading-relaxed">
+                        <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{d}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* AI SOLUTIONS (Tab 7) */}
+        {
+          activeTab === 'AI Solutions' && (
+            <div className="grid lg:grid-cols-3 gap-8 animate-in fade-in">
+              {aiSolutionsData.map((ai, i) => (
+                <div key={i} className="p-10 bg-slate-950 border border-white/5 rounded-[3rem] relative overflow-hidden group hover:border-purple-500 transition-all flex flex-col h-full">
+                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-600/10 blur-[80px] group-hover:scale-150 transition-all" />
+                  <h3 className="text-4xl font-black text-white uppercase italic mb-2 relative z-10">{ai.title}</h3>
+                  <p className="text-[10px] text-purple-400 font-black tracking-widest uppercase mb-8 pb-4 border-b border-white/10 relative z-10">{ai.subtitle}</p>
+                  <div className="space-y-4 relative z-10 flex-grow">
+                    {ai.points.map((p, j) => (
+                      <div key={j} className="text-sm text-slate-400 font-light flex items-start gap-2">
+                        <Zap size={14} className="text-purple-500 mt-1 shrink-0" />
+                        <span>{p}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* CYBER SECURITY (Tab 8) */}
+        {
+          activeTab === 'Cyber Security' && (
+            <div className="space-y-12 animate-in slide-in-from-left-8">
+              <div className="bg-red-950/20 border border-red-500/20 p-10 md:p-16 rounded-[3rem] text-center">
+                <ShieldAlert size={64} className="mx-auto text-red-500 mb-8" />
+                <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">{cyberSecurityData[0].title}</h2>
+                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">{cyberSecurityData[0].desc}</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-red-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{cyberSecurityData[1].title}</h3>
+                  <ul className="space-y-6">
+                    {cyberSecurityData[1].list.map((item, i) => (
+                      <li key={i} className="flex items-start gap-4 text-slate-400">
+                        <Lock size={20} className="text-red-500 shrink-0" /> <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-red-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{cyberSecurityData[2].title}</h3>
+                  <p className="text-slate-400 leading-relaxed text-lg">{cyberSecurityData[2].desc}</p>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    {['Discover', 'Assess', 'Control', 'Report'].map(step => (
+                      <span key={step} className="px-4 py-2 bg-red-500/10 text-red-400 rounded-lg text-xs font-black uppercase tracking-widest">{step}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {/* AI SECURITY (Tab 9) */}
+        {
+          activeTab === 'AI Security' && (
+            <div className="space-y-12 animate-in slide-in-from-right-8">
+              <div className="bg-rose-950/20 border border-rose-500/20 p-10 md:p-16 rounded-[3rem] text-center">
+                <Lock size={64} className="mx-auto text-rose-500 mb-8" />
+                <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">{aiSecurityData[0].title}</h2>
+                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">{aiSecurityData[0].desc}</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-rose-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{aiSecurityData[1].title}</h3>
+                  <ul className="space-y-6">
+                    {aiSecurityData[1].list.map((item, i) => (
+                      <li key={i} className="flex items-start gap-4 text-slate-400">
+                        <ShieldAlert size={20} className="text-rose-500 shrink-0" /> <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-rose-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{aiSecurityData[2].title}</h3>
+                  <p className="text-slate-400 leading-relaxed text-lg">{aiSecurityData[2].desc}</p>
+                  <div className="mt-8 grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-white/5 rounded-xl text-center"><span className="block text-2xl font-black text-white">73%</span><span className="text-[9px] text-slate-500 uppercase tracking-widest">Breached AI Systems</span></div>
+                    <div className="p-4 bg-white/5 rounded-xl text-center"><span className="block text-2xl font-black text-white">82%</span><span className="text-[9px] text-slate-500 uppercase tracking-widest">Financial Prompt Injections</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {/* AGI ANTI-TERROR (Tab 10) */}
+        {
+          activeTab === 'AGI Anti-Terror' && (
+            <div className="space-y-12 animate-in fade-in duration-700">
+              {/* Header */}
+              <div className="bg-teal-950/20 border border-teal-500/20 p-10 md:p-16 rounded-[3rem] text-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-teal-500/5 blur-[100px] group-hover:bg-teal-500/10 transition-all rounded-[3rem]"></div>
+                <ShieldAlert size={64} className="mx-auto text-teal-400 mb-8 relative z-10 animate-pulse" />
+                <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6 relative z-10">{antiTerrorData.title}</h2>
+                <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed relative z-10">{antiTerrorData.goal.desc}</p>
+
+                <div className="mt-8 flex flex-wrap justify-center gap-3 relative z-10">
+                  {antiTerrorData.goal.purpose.map((p, i) => (
+                    <span key={i} className="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-lg text-xs font-black uppercase tracking-widest border border-teal-500/20">{p}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Important Legal Note */}
+              <div className="p-8 bg-red-950/30 border-l-4 border-red-500 rounded-2xl flex items-start gap-4 shadow-xl">
+                <ShieldAlert className="text-red-500 shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-red-400 font-black uppercase tracking-widest text-sm mb-2">Legal Limitation Summary</h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">{antiTerrorData.goal.important}</p>
+                </div>
+              </div>
+
+              {/* Architecture & Stack Grid */}
+              <div className="grid lg:grid-cols-2 gap-8">
+                {/* Architecture */}
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Architecture</h3>
+                  <div className="space-y-8">
+                    {antiTerrorData.architecture.map((arch, i) => (
+                      <div key={i}>
+                        <h4 className="text-teal-400 font-black uppercase tracking-widest text-sm mb-3">{arch.title}</h4>
+                        <ul className="space-y-2">
+                          {arch.items.map((item, j) => (
+                            <li key={j} className="flex items-start gap-3 text-slate-400 text-sm">
+                              <Binary size={14} className="text-teal-500/50 mt-1 shrink-0" /> <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Technologies Stack */}
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Tech Stack & Cloud</h3>
+                  <div className="grid gap-6">
+                    {antiTerrorData.techStack.map((tech, i) => (
+                      <div key={i} className="p-5 bg-white/5 rounded-2xl border border-white/5">
+                        <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-2">{tech.category}</h4>
+                        <p className="text-slate-300 text-sm font-light">{tech.items}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Hardware Components */}
+              <div className="grid md:grid-cols-2 gap-8">
+                {antiTerrorData.components.map((comp, i) => (
+                  <div key={i} className="p-10 bg-slate-950 border border-white/5 rounded-[3rem] hover:border-indigo-500/40 transition-all group relative overflow-hidden flex flex-col h-full">
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-all" />
+                    <Bot size={32} className="text-indigo-400 mb-6 relative z-10" />
+                    <h3 className="text-2xl font-black text-white uppercase italic mb-2 relative z-10">{comp.title}</h3>
+                    <p className="text-[10px] text-slate-500 font-black tracking-widest uppercase mb-6 pb-4 border-b border-white/10 relative z-10">{comp.models}</p>
+
+                    <div className="space-y-6 relative z-10 flex-grow">
+                      {comp.capabilities && (
+                        <div>
+                          <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Capabilities</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {comp.capabilities.map((cap, j) => (
+                              <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{cap}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {comp.aiModels && (
+                        <div>
+                          <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">AI Models Onboard</h4>
+                          <ul className="space-y-2">
+                            {comp.aiModels.map((ai, j) => (
+                              <li key={j} className="text-xs text-slate-400 flex items-center gap-2"><Zap size={12} className="text-indigo-500" /> {ai}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {comp.features && (
+                        <div>
+                          <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Robotic Features</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {comp.features.map((feat, j) => (
+                              <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{feat}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
-            </div>
 
-            {/* Legal & Deployment Split */}
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40">
-                <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{antiTerrorData.legalHandling.title}</h3>
+              {/* AI Intelligence Modules */}
+              <div className="bg-slate-950/50 p-10 md:p-14 border border-white/5 rounded-[3rem]">
+                <h3 className="text-3xl font-black text-white uppercase italic mb-10 flex items-center gap-4"><BrainCircuit className="text-purple-500" /> Neural Detection Modules</h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {antiTerrorData.intelligenceModules.map((module, i) => (
+                    <div key={i} className="p-6 bg-slate-900/60 rounded-3xl border border-white/5 hover:border-purple-500/30 transition-all flex flex-col h-full">
+                      <h4 className="text-lg font-black text-white uppercase leading-tight mb-4">{module.title}</h4>
+                      <ul className="space-y-3 mb-6 flex-grow">
+                        {module.items.map((item, j) => (
+                          <li key={j} className="text-xs text-slate-400 flex items-start gap-2"><Activity size={12} className="text-purple-500 mt-0.5 shrink-0" /> {item}</li>
+                        ))}
+                      </ul>
+                      {(module.models || module.dataset) && (
+                        <div className="mt-auto pt-4 border-t border-white/5">
+                          <span className="text-[9px] text-purple-400 font-black uppercase tracking-widest block mb-1">{module.models ? 'Models Used' : 'Dataset'}</span>
+                          <span className="text-xs text-slate-500 font-medium">{module.models || module.dataset}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Legal & Deployment Split */}
+              <div className="grid lg:grid-cols-2 gap-8">
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{antiTerrorData.legalHandling.title}</h3>
+
+                  <div className="space-y-8">
+                    <div>
+                      <h4 className="text-green-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><CheckCircle2 size={16} /> Allowed Operations</h4>
+                      <ul className="space-y-3">
+                        {antiTerrorData.legalHandling.use.map((item, i) => (
+                          <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-green-500 rounded-full shrink-0" /> {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="text-red-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><X size={16} /> Strictly Prohibited</h4>
+                      <ul className="space-y-3">
+                        {antiTerrorData.legalHandling.never.map((item, i) => (
+                          <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" /> {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
 
                 <div className="space-y-8">
-                  <div>
-                    <h4 className="text-green-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><CheckCircle2 size={16} /> Allowed Operations</h4>
-                    <ul className="space-y-3">
-                      {antiTerrorData.legalHandling.use.map((item, i) => (
-                        <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-green-500 rounded-full shrink-0" /> {item}</li>
+                  <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
+                    <h3 className="text-xl font-black text-white uppercase italic mb-6">High Priority Deployment Zones</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {antiTerrorData.deploymentAreas.map((area, i) => (
+                        <span key={i} className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs font-bold uppercase tracking-wider">{area}</span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
-                  <div>
-                    <h4 className="text-red-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><X size={16} /> Strictly Prohibited</h4>
-                    <ul className="space-y-3">
-                      {antiTerrorData.legalHandling.never.map((item, i) => (
-                        <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" /> {item}</li>
+                  <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
+                    <h3 className="text-xl font-black text-white uppercase italic mb-6">Risk Scoring & Action Matrix</h3>
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      {antiTerrorData.riskScoring.map((score, i) => (
+                        <div key={i} className="p-3 bg-white/5 rounded-lg text-center border border-white/5 text-xs text-slate-400 font-medium">{score}</div>
                       ))}
-                    </ul>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-[10px] text-red-500 font-black uppercase tracking-widest w-full mb-1">Automated Actions on High Threshold</span>
+                      {antiTerrorData.riskActions.map((action, i) => (
+                        <span key={i} className="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-md text-[10px] uppercase font-bold tracking-wider">{action}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-8">
-                <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
-                  <h3 className="text-xl font-black text-white uppercase italic mb-6">High Priority Deployment Zones</h3>
+              {/* Bottom Info Panels */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
+                  <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><Lock size={14} className="inline mr-2" /> Security Layer</h4>
+                  <ul className="space-y-2">
+                    {antiTerrorData.securityLayer.map((sec, i) => (
+                      <li key={i} className="text-xs text-slate-400">• {sec}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
+                  <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><ShieldCheck size={14} className="inline mr-2" /> Ethical Requirements</h4>
+                  <ul className="space-y-2">
+                    {antiTerrorData.requirements.map((req, i) => (
+                      <li key={i} className="text-xs text-slate-400">• {req}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-gradient-to-br from-teal-900/50 to-slate-900/40 rounded-[2rem] border border-teal-500/20 md:col-span-2 lg:col-span-1">
+                  <h4 className="text-white font-black uppercase tracking-widest text-xs mb-4"><Globe size={14} className="inline mr-2" /> Startup Potential</h4>
                   <div className="flex flex-wrap gap-2">
-                    {antiTerrorData.deploymentAreas.map((area, i) => (
-                      <span key={i} className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs font-bold uppercase tracking-wider">{area}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
-                  <h3 className="text-xl font-black text-white uppercase italic mb-6">Risk Scoring & Action Matrix</h3>
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    {antiTerrorData.riskScoring.map((score, i) => (
-                      <div key={i} className="p-3 bg-white/5 rounded-lg text-center border border-white/5 text-xs text-slate-400 font-medium">{score}</div>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-[10px] text-red-500 font-black uppercase tracking-widest w-full mb-1">Automated Actions on High Threshold</span>
-                    {antiTerrorData.riskActions.map((action, i) => (
-                      <span key={i} className="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-md text-[10px] uppercase font-bold tracking-wider">{action}</span>
+                    {antiTerrorData.startup.map((st, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-teal-500/20 text-teal-300 rounded-lg text-[10px] font-bold uppercase tracking-wider">{st}</span>
                     ))}
                   </div>
                 </div>
               </div>
+
             </div>
+          )
+        }
 
-            {/* Bottom Info Panels */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
-                <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><Lock size={14} className="inline mr-2" /> Security Layer</h4>
-                <ul className="space-y-2">
-                  {antiTerrorData.securityLayer.map((sec, i) => (
-                    <li key={i} className="text-xs text-slate-400">• {sec}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
-                <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><ShieldCheck size={14} className="inline mr-2" /> Ethical Requirements</h4>
-                <ul className="space-y-2">
-                  {antiTerrorData.requirements.map((req, i) => (
-                    <li key={i} className="text-xs text-slate-400">• {req}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="p-6 bg-gradient-to-br from-teal-900/50 to-slate-900/40 rounded-[2rem] border border-teal-500/20 md:col-span-2 lg:col-span-1">
-                <h4 className="text-white font-black uppercase tracking-widest text-xs mb-4"><Globe size={14} className="inline mr-2" /> Startup Potential</h4>
-                <div className="flex flex-wrap gap-2">
-                  {antiTerrorData.startup.map((st, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-teal-500/20 text-teal-300 rounded-lg text-[10px] font-bold uppercase tracking-wider">{st}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-          </div>
-        )}
-
-      </main>
+      </main >
 
       <footer className="relative z-10 border-t border-white/5 bg-black pt-20 pb-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
@@ -690,7 +729,7 @@ const App = () => {
         .animate-bounce-slow { animation: bounce-slow 4s ease-in-out infinite; }
         @media (min-width: 768px) { .cursor-none * { cursor: none !important; } }
       `}} />
-    </div>
+    </div >
   );
 };
 

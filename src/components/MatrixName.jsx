@@ -8,55 +8,104 @@ const MATRIX_CHARS = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃ�
 /**
  * Matrix Rain Canvas Background
  */
-export const MatrixRainBackground = ({ opacity = 0.25, color = '#22c55e' }) => {
+export const MatrixRainBackground = ({
+  opacity = 1,
+  color = '#22c55e',
+}) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     let animationFrameId;
 
     let width = (canvas.width = canvas.parentElement?.clientWidth || 400);
     let height = (canvas.height = canvas.parentElement?.clientHeight || 400);
 
-    const fontSize = 14;
-    const columns = Math.floor(width / fontSize);
-    const drops = Array.from({ length: columns }, () => Math.floor(Math.random() * -50));
+    // Smaller font = more Matrix columns
+    const fontSize = 15;
+    let columns = Math.floor(width / fontSize);
+
+    let drops = Array.from(
+      { length: columns },
+      () => Math.floor(Math.random() * -40)
+    );
 
     const handleResize = () => {
       if (!canvas.parentElement) return;
+
       width = canvas.width = canvas.parentElement.clientWidth;
       height = canvas.height = canvas.parentElement.clientHeight;
+
+      columns = Math.floor(width / fontSize);
+
+      drops = Array.from(
+        { length: columns },
+        () => Math.floor(Math.random() * -40)
+      );
     };
 
     window.addEventListener('resize', handleResize);
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(10, 15, 30, 0.12)';
+      // Dark transparent overlay keeps the trails visible
+      ctx.fillStyle = 'rgba(2, 6, 23, 0.12)';
       ctx.fillRect(0, 0, width, height);
 
-      ctx.font = `${fontSize}px monospace`;
+      ctx.font = `bold ${fontSize}px monospace`;
+      ctx.textAlign = 'center';
 
       for (let i = 0; i < drops.length; i++) {
-        const char = MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)];
-        const x = i * fontSize;
+        const char =
+          MATRIX_CHARS[
+          Math.floor(Math.random() * MATRIX_CHARS.length)
+          ];
+
+        const x = i * fontSize + fontSize / 2;
         const y = drops[i] * fontSize;
 
-        // Bright tip on top
-        ctx.fillStyle = '#ffffff';
+        // Bright Matrix head
+        ctx.fillStyle = '#86efac';
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = '#22c55e';
+
         ctx.fillText(char, x, y);
 
-        // Matrix Green body
+        // Green body
         ctx.fillStyle = color;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = color;
-        ctx.fillText(char, x, y - fontSize);
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = '#16a34a';
+
+        ctx.fillText(
+          MATRIX_CHARS[
+          Math.floor(Math.random() * MATRIX_CHARS.length)
+          ],
+          x,
+          y - fontSize
+        );
+
+        // Extra darker character behind
+        ctx.fillStyle = '#15803d';
+        ctx.shadowBlur = 3;
+        ctx.shadowColor = '#14532d';
+
+        ctx.fillText(
+          MATRIX_CHARS[
+          Math.floor(Math.random() * MATRIX_CHARS.length)
+          ],
+          x,
+          y - fontSize * 2
+        );
+
         ctx.shadowBlur = 0;
 
-        if (y > height && Math.random() > 0.975) {
-          drops[i] = 0;
+        // Restart column
+        if (y > height && Math.random() > 0.96) {
+          drops[i] = Math.floor(Math.random() * -15);
         }
+
         drops[i]++;
       }
 
@@ -74,8 +123,11 @@ export const MatrixRainBackground = ({ opacity = 0.25, color = '#22c55e' }) => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none rounded-[3rem] overflow-hidden"
-      style={{ opacity }}
+      className="absolute inset-0 w-full h-full pointer-events-none rounded-[3rem]"
+      style={{
+        opacity,
+        mixBlendMode: 'screen',
+      }}
     />
   );
 };
@@ -88,7 +140,7 @@ export const MatrixName = ({
   className = '',
   speed = 45,
   revealDelay = 3,
-  autoRestartInterval = 8000,
+  autoRestartInterval = 4000,
   enableHover = true,
 }) => {
   const [displayText, setDisplayText] = useState([]);
@@ -212,10 +264,10 @@ export const MatrixName = ({
                 <span
                   key={c.key}
                   className={`inline-block transition-colors duration-75 ${c.isHighlight
-                      ? 'text-white scale-110 drop-shadow-[0_0_12px_rgba(74,222,128,1)] font-bold'
-                      : !c.isLocked
-                        ? 'text-green-400 font-bold drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]'
-                        : 'text-white italic group-hover:text-green-300 transition-colors drop-shadow-[0_0_15px_rgba(34,197,94,0.3)]'
+                    ? 'text-green-400 scale-110 drop-shadow-[0_0_5px_rgba(74,222,128,0.4)] font-bold'
+                    : !c.isLocked
+                      ? 'text-green-800 font-bold drop-shadow-[0_0_3px_rgba(34,197,94,0.25)]'
+                      : 'text-green-700 italic group-hover:text-green-400 transition-colors drop-shadow-[0_0_5px_rgba(34,197,94,0.15)]'
                     }`}
                   style={{
                     fontFamily: c.isLocked ? 'inherit' : 'Consolas, monospace',
