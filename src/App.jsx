@@ -11,6 +11,7 @@ import {
 } from './data';
 import MatrixName, { MatrixRainBackground } from './components/MatrixName';
 import ProjectsTab from './components/ProjectsTab';
+import CyberBackground, { TAB_COLOR_PALETTES } from './components/CyberBackground';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('Contact');
@@ -40,63 +41,82 @@ const App = () => {
   };
 
   const currentTabColor = tabs.find(t => t.name === activeTab)?.color || 'blue';
+  const currentTheme = TAB_COLOR_PALETTES[currentTabColor] || TAB_COLOR_PALETTES.blue;
 
   return (
-    <div className="min-h-screen bg-black text-slate-200 font-sans selection:bg-blue-500/30 selection:text-white scroll-smooth cursor-none overflow-x-hidden">
+    <div className="min-h-screen bg-black text-slate-200 font-sans selection:bg-blue-500/30 selection:text-white scroll-smooth cursor-none overflow-x-hidden relative">
 
-      {/* Background Parallax */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div
-          className="absolute inset-0 opacity-20 transition-transform duration-500 ease-out"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #334155 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-            transform: `translate(${(mousePos.x - window.innerWidth / 2) * 0.02}px, ${(mousePos.y - window.innerHeight / 2) * 0.02}px)`
-          }}
-        />
-        <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[120px] opacity-10 transition-colors duration-1000 bg-${currentTabColor}-600`}
-          style={{ transform: `translate(${(mousePos.x - window.innerWidth / 2) * 0.05}px, ${(mousePos.y - window.innerHeight / 2) * 0.05}px)` }}
-        />
-      </div>
+      {/* Interactive High-Tech Cyber & Neural Constellation Background */}
+      <CyberBackground activeTabColor={currentTabColor} mousePos={mousePos} />
 
       {/* Liquid Cursor (Desktop Only) */}
       <div
         className="fixed pointer-events-none z-[999] transition-transform duration-300 ease-out hidden md:flex items-center justify-center"
         style={{ transform: `translate3d(${mousePos.x - 20}px, ${mousePos.y - 20}px, 0)` }}
       >
-        <div className={`w-10 h-10 rounded-full border-2 border-${currentTabColor}-500/50 transition-all duration-500 ${cursorType === 'pointer' ? 'scale-[2.5] bg-current/5 border-dashed rotate-90' : 'scale-100'}`} />
-        <div className={`absolute w-1.5 h-1.5 bg-${currentTabColor}-400 rounded-full transition-transform duration-500 ${cursorType === 'pointer' ? 'scale-0' : 'scale-100'}`} />
+        <div
+          className={`w-10 h-10 rounded-full border-2 transition-all duration-500 ${cursorType === 'pointer' ? 'scale-[2.5] border-dashed rotate-90' : 'scale-100'}`}
+          style={{
+            borderColor: `${currentTheme.primary}80`,
+            backgroundColor: cursorType === 'pointer' ? `${currentTheme.primary}15` : 'transparent',
+            boxShadow: `0 0 16px ${currentTheme.primary}40`
+          }}
+        />
+        <div
+          className={`absolute w-1.5 h-1.5 rounded-full transition-transform duration-500 ${cursorType === 'pointer' ? 'scale-0' : 'scale-100'}`}
+          style={{
+            backgroundColor: currentTheme.accent,
+            boxShadow: `0 0 8px ${currentTheme.primary}`
+          }}
+        />
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-[100] transition-all duration-700 ${scrolled ? 'bg-black/80 backdrop-blur-2xl border-b border-white/5 py-2' : 'bg-transparent py-4'}`}>
+      <nav className={`fixed top-0 w-full z-[100] transition-all duration-700 ${scrolled ? 'bg-black/85 backdrop-blur-2xl border-b border-white/10 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.8)]' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div onMouseEnter={() => setCursorType('pointer')} onMouseLeave={() => setCursorType('default')} className="flex items-center gap-4 cursor-pointer group" onClick={() => handleTabClick('Contact')}>
-            <div className={`w-12 h-12 bg-gradient-to-br from-${currentTabColor}-600 to-slate-900 rounded-2xl flex items-center justify-center font-black text-white text-2xl shadow-xl transition-all duration-1000 group-hover:rotate-[360deg]`}>M</div>
+            <div
+              className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-white text-2xl shadow-xl transition-all duration-1000 group-hover:rotate-[360deg] border border-white/10"
+              style={{
+                background: `linear-gradient(135deg, ${currentTheme.primary}, #090d16)`,
+                boxShadow: `0 0 20px ${currentTheme.primary}50`
+              }}
+            >
+              M
+            </div>
             <div>
               <h1 className="text-xl font-black text-white tracking-tighter">MURTUZA</h1>
-              <span className="text-[9px] text-slate-500 tracking-[0.3em] uppercase font-bold opacity-80 block">Systems Architect</span>
+              <span className="text-[9px] text-slate-400 tracking-[0.3em] uppercase font-bold opacity-80 block">Systems Architect</span>
             </div>
           </div>
 
           {/* Desktop Tabs */}
-          <div className="hidden lg:flex flex-wrap items-center justify-center gap-1 bg-slate-900/40 p-1.5 rounded-full border border-white/5 backdrop-blur-md max-w-[60%]">
-            {tabs.map((tab) => (
-              <button
-                key={tab.name}
-                onMouseEnter={() => setCursorType('pointer')}
-                onMouseLeave={() => setCursorType('default')}
-                onClick={() => handleTabClick(tab.name)}
-                className={`px-4 py-2 rounded-full text-[10px] sm:text-[9px] font-black transition-all flex items-center gap-1 uppercase tracking-widest relative overflow-hidden group ${activeTab === tab.name ? 'text-white' : 'text-slate-500 hover:text-slate-300'
-                  }`}
-              >
-                {activeTab === tab.name && (
-                  <div className={`absolute inset-0 bg-${tab.color}-600 shadow-lg animate-in zoom-in-75 duration-500 rounded-full`} />
-                )}
-                <span className="relative z-10 flex items-center gap-1.5">{tab.icon}<span className="hidden xl:inline">{tab.name}</span></span>
-              </button>
-            ))}
+          <div className="hidden lg:flex flex-wrap items-center justify-center gap-1 bg-slate-950/70 p-1.5 rounded-full border border-white/10 backdrop-blur-xl max-w-[62%] shadow-2xl">
+            {tabs.map((tab) => {
+              const tabTheme = TAB_COLOR_PALETTES[tab.color] || TAB_COLOR_PALETTES.blue;
+              const isActive = activeTab === tab.name;
+              return (
+                <button
+                  key={tab.name}
+                  onMouseEnter={() => setCursorType('pointer')}
+                  onMouseLeave={() => setCursorType('default')}
+                  onClick={() => handleTabClick(tab.name)}
+                  className={`px-4 py-2 rounded-full text-[10px] sm:text-[9px] font-black transition-all flex items-center gap-1 uppercase tracking-widest relative overflow-hidden group ${isActive ? 'text-white' : 'text-slate-400 hover:text-white'
+                    }`}
+                >
+                  {isActive && (
+                    <div
+                      className="absolute inset-0 shadow-lg animate-in zoom-in-75 duration-500 rounded-full"
+                      style={{
+                        backgroundColor: tabTheme.primary,
+                        boxShadow: `0 0 20px ${tabTheme.primary}90`
+                      }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5">{tab.icon}<span className="hidden xl:inline">{tab.name}</span></span>
+                </button>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-4">
@@ -104,9 +124,9 @@ const App = () => {
               onClick={handleContact}
               onMouseEnter={() => setCursorType('pointer')}
               onMouseLeave={() => setCursorType('default')}
-              className="hidden md:flex bg-white text-black px-6 py-2.5 rounded-full text-[18px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+              className="hidden md:flex bg-white text-black px-6 py-2.5 rounded-full text-[18px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,255,255,0.4)]"
             >
-              Secure Hire <Sparkles size={18} className="ml-2 inline" />
+              Secure Hire <Sparkles size={18} className="ml-2 inline text-blue-600" />
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -123,18 +143,26 @@ const App = () => {
         {isMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-white/10 shadow-2xl animate-in slide-in-from-top-2">
             <div className="flex flex-col p-4 gap-2 max-h-[70vh] overflow-y-auto">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.name}
-                  onClick={() => handleTabClick(tab.name)}
-                  className={`flex items-center gap-4 px-6 py-4 rounded-xl text-left font-black tracking-widest uppercase text-xs transition-all ${activeTab === tab.name
-                    ? `bg-${tab.color}-600/20 text-${tab.color}-400 border border-${tab.color}-500/30`
-                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
-                    }`}
-                >
-                  {tab.icon} {tab.name}
-                </button>
-              ))}
+              {tabs.map((tab) => {
+                const tabTheme = TAB_COLOR_PALETTES[tab.color] || TAB_COLOR_PALETTES.blue;
+                const isActive = activeTab === tab.name;
+                return (
+                  <button
+                    key={tab.name}
+                    onClick={() => handleTabClick(tab.name)}
+                    className="flex items-center gap-4 px-6 py-4 rounded-xl text-left font-black tracking-widest uppercase text-xs transition-all text-slate-300"
+                    style={isActive ? {
+                      backgroundColor: `${tabTheme.primary}25`,
+                      color: tabTheme.accent,
+                      borderColor: `${tabTheme.primary}60`,
+                      borderWidth: '1px',
+                      boxShadow: `0 0 15px ${tabTheme.primary}30`
+                    } : {}}
+                  >
+                    {tab.icon} {tab.name}
+                  </button>
+                );
+              })}
               <button
                 onClick={handleContact}
                 className="mt-4 bg-white text-black px-6 py-4 rounded-xl text-xs font-black uppercase tracking-widest text-center"
