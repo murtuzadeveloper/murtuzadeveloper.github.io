@@ -120,7 +120,7 @@ export const ProjectsTab = () => {
         <div className="relative z-10 max-w-4xl">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span>SYS: 20_SYSTEM_ARCHITECTURES_ACTIVE</span>
+            <span>SYS: {projectsData.length}_SYSTEM_ARCHITECTURES_ACTIVE</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white italic tracking-tight uppercase mb-4 leading-tight">
@@ -131,13 +131,13 @@ export const ProjectsTab = () => {
           </h2>
 
           <p className="text-slate-300 text-base sm:text-lg font-light leading-relaxed max-w-3xl">
-            20 production-grade system blueprints covering Trillion-Dollar AI Infrastructure, LangGraph + MCP Swarms, Autonomous FinTech Platforms, Computer Vision Security, Omni-Channel Voice Call Centers, Enterprise RAG, and Cloud-Native Microservices.
+            {projectsData.length} production-grade system blueprints covering Autonomous Payroll & Payment Infrastructure, Trillion-Dollar AI Infrastructure, LangGraph + MCP Swarms, Autonomous FinTech Platforms, Computer Vision Security, Omni-Channel Voice Call Centers, Enterprise RAG, and Cloud-Native Microservices.
           </p>
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-white/10">
             <div className="bg-slate-900/60 border border-white/5 p-4 rounded-2xl">
-              <span className="text-2xl sm:text-3xl font-mono font-black text-cyan-400">20</span>
+              <span className="text-2xl sm:text-3xl font-mono font-black text-cyan-400">{projectsData.length}</span>
               <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Full Architectures</p>
             </div>
             <div className="bg-slate-900/60 border border-white/5 p-4 rounded-2xl">
@@ -165,7 +165,7 @@ export const ProjectsTab = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search 20 projects by title, tech stack (e.g. GB300, LangGraph, MCP, Asterisk, RAG)..."
+            placeholder={`Search ${projectsData.length} projects by title, tech stack (e.g. PayPilot, Payment Gateway, GB300, LangGraph)...`}
             className="w-full bg-slate-900/80 border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all"
           />
           {searchQuery && (

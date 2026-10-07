@@ -2395,5 +2395,159 @@ export const projectsData = [
             "WebRTC"
         ],
         "schema": "18-Dimension Consultative Discovery Framework\n              ↓\n  ┌───────────────────────┬───────────────────────┐\n  ↓                       ↓                       ↓\nBusiness & Telephony    Voice Experience & RAG   Security & Latency\n(Objectives, PBX, SIP)  (TTS/STT, Interruption)  (PII, Sub-800ms SLA)\n  └───────────────────────┬───────────────────────┘\n              ↓\nMulti-Tier Human Escalation & Failure Clarification Matrices\n              ↓\n5-Stage Phased Rollout Plan (PoC → Pilot → WhatsApp → Scale)\n              ↓\nTarget Metrics Validation (Automation %, CSAT, Unit Cost ROI)"
+    },
+    {
+        "id": "paypilot-ai-autonomous-payroll",
+        "number": "21",
+        "title": "PayPilot AI - Autonomous Payroll & Account Management Platform",
+        "tagline": "Autonomous Payroll & Finance Agent from employee data to verified multi-bank salary dispatching",
+        "category": "FinTech AI",
+        "color": "cyan",
+        "image": "/projects/21. PayPilot AI Autonomous Payroll Platform.png",
+        "description": "From employee data to verified salary payment — PayPilot AI autonomously prepares, validates, detects risks, obtains executive authorization, and executes multi-bank salary dispatching with built-in AI anomaly detection, bank-grade encryption, and conversational employee self-service.",
+        "workflowType": "autonomous-payroll",
+        "workflowSteps": [
+            {
+                "step": "01",
+                "role": "AI Employee Profile Ingestion",
+                "action": "Sync employee profiles, biometric attendance, leaves, loans, tax slabs & bank account details",
+                "icon": "UserCheck"
+            },
+            {
+                "step": "02",
+                "role": "Autonomous Payroll Agent",
+                "action": "End-to-end gross-to-net salary calculation, tax deductions, bonuses & allowances computation",
+                "icon": "BrainCircuit"
+            },
+            {
+                "step": "03",
+                "role": "AI Anomaly & Risk Detection",
+                "action": "Detect sudden salary deviations, ghost employee accounts, duplicate records & payroll errors",
+                "icon": "AlertTriangle"
+            },
+            {
+                "step": "04",
+                "role": "Executive Authorization Gate",
+                "action": "Multi-tier executive dashboard review with 1-click cryptographic approval & audit logging",
+                "icon": "Lock"
+            },
+            {
+                "step": "05",
+                "role": "Smart Salary Dispatching",
+                "action": "Direct bulk salary transfer via secure banking APIs (HBL, UBL, Meezan, 1-Link integration)",
+                "icon": "Zap"
+            },
+            {
+                "step": "06",
+                "role": "Employee Self-Service & AI Bot",
+                "action": "Automated WhatsApp payslips, mobile self-service portal, leave requests & conversational AI assistant",
+                "icon": "MessageSquare"
+            }
+        ],
+        "features": [
+            "AI Employee Account Management: Complete financial profiles, attendance, leaves, loans, tax brackets & deductions",
+            "Autonomous Payroll Agent: End-to-end automated payroll calculation with validation, risk audits & approval checkpoints",
+            "Smart Salary Dispatching: Multi-bank bulk payment execution with direct API integrations (HBL, UBL, Meezan, 1-Link)",
+            "AI Anomaly Detection: Sub-second detection of unusual salary changes, duplicate payments, ghost accounts & fraud",
+            "Bank-Grade Enterprise Security: Zero-trust RBAC, multi-factor authentication (MFA), AES-256 encryption & audit logs",
+            "Employee Self-Service Portal: Instant payslip downloads, leave management, loan tracking & salary advance requests",
+            "AI CFO / HR Assistant Copilot: Natural language query engine ('How much will Ahmed receive?', payroll budget forecasts)",
+            "Executive Financial Dashboard: Real-time payroll breakdown (PKR 42.8M), tax distributions, anomaly alerts & cash runway",
+            "Agentic Architecture: Specialized collaborative AI agents orchestrating calculations, compliance, banking & notifications",
+            "Omni-Channel WhatsApp Automation: Instant payslip delivery, employee query answering & WhatsApp alert integration"
+        ],
+        "techStack": [
+            "Python",
+            "FastAPI",
+            "LangGraph",
+            "Open Banking APIs",
+            "PostgreSQL",
+            "Redis",
+            "WhatsApp Cloud API",
+            "React / Next.js",
+            "Docker",
+            "Tailwind CSS"
+        ],
+        "schema": "Employee Profile Ingestion (Attendance, Leaves, Loans, Tax Slabs)\n              ↓\nAutonomous Payroll Agent (Gross-to-Net Calculations & Deductions)\n              ↓\nAI Anomaly & Risk Detection (Flag Calculation Errors & Ghost Accounts)\n              ↓\nExecutive Authorization & Multi-Tier Approval Gate\n              ↓\nSmart Salary Dispatching (Direct Bank APIs: HBL, UBL, Meezan, 1-Link)\n              ↓\nEmployee Self-Service Portal & Automated WhatsApp Payslips"
+    },
+    {
+        "id": "ai-payment-gateway-infrastructure",
+        "number": "22",
+        "title": "AI Payment Gateway & Autonomous Financial Infrastructure",
+        "tagline": "Zero-downtime, self-healing, self-developing & autonomous payment operations platform",
+        "category": "FinTech AI",
+        "color": "blue",
+        "image": "/projects/22. AI Payment Gateway Infrastructure.png",
+        "description": "An advanced AI-powered payment gateway and autonomous financial operations platform designed for fintechs, banks, SaaS companies, and global marketplaces. Features zero-downtime active-active architecture, autonomous self-developing code agents, sub-50ms AI fraud scoring, and multi-provider intelligent routing.",
+        "workflowType": "autonomous-gateway",
+        "workflowSteps": [
+            {
+                "step": "01",
+                "role": "Multi-Payment Ingestion",
+                "action": "Ingest cards, bank rails, digital wallets, mobile payments, payment links, invoices & subscriptions",
+                "icon": "Database"
+            },
+            {
+                "step": "02",
+                "role": "AI Fraud & Risk Engine",
+                "action": "Sub-50ms behavioral scoring, velocity monitoring, account takeover detection & adaptive fraud rules",
+                "icon": "ShieldAlert"
+            },
+            {
+                "step": "03",
+                "role": "Multi-Provider Smart Routing",
+                "action": "Dynamic transaction routing based on real-time provider availability, processing cost, geography & latency",
+                "icon": "Workflow"
+            },
+            {
+                "step": "04",
+                "role": "Intelligent Retry & Failover",
+                "action": "Automated fallback route switching, circuit breaker protection & zero-loss failure recovery",
+                "icon": "Zap"
+            },
+            {
+                "step": "05",
+                "role": "Self-Healing AI Payment Engine",
+                "action": "Continuously diagnoses infrastructure issues, auto-restarts unhealthy services & shifts traffic seamlessly",
+                "icon": "Activity"
+            },
+            {
+                "step": "06",
+                "role": "Self-Developing & Self-Updating AI",
+                "action": "Autonomous engineering agents handle bug detection, regression test generation & continuous CI/CD rollout",
+                "icon": "Code2"
+            },
+            {
+                "step": "07",
+                "role": "AI Payment Intelligence & Settlement",
+                "action": "Real-time BI telemetry on volume, revenue, success rates, provider performance & autonomous settlement",
+                "icon": "BarChart3"
+            }
+        ],
+        "features": [
+            "Zero-Downtime Payment Architecture: High-availability active-active multi-region deployment with zero single point of failure",
+            "Self-Healing AI Payment Engine: Continuous monitoring, automated infrastructure diagnosis, auto-restarts & load rebalancing",
+            "Self-Developing & Self-Updating AI: Autonomous engineering agents handling code analysis, test suites, and CI/CD releases",
+            "Multi-Payment Processing: Cards, bank transfers, digital wallets, mobile payments, payment links, subscriptions & payouts",
+            "AI Fraud & Risk Engine: Real-time fraud detection, adaptive rule synthesis, velocity checks & suspicious activity scoring",
+            "Enterprise Security: End-to-end tokenization, AES-256 encryption, zero-trust RBAC, PCI-DSS, SOC2 & HIPAA readiness",
+            "AI Payment Intelligence Dashboard: Real-time telemetry on transaction volume, provider latencies, and conversion rates",
+            "Intelligent Retry & Routing: Automatic route switching across acquiring banks on failure to maximize checkout conversion",
+            "Cloud-Native Massively Scalable: Kubernetes microservices, Kafka event streams, Redis caching & auto-scaling to millions of txns",
+            "Agentic AI Architecture: Specialized swarms for Payment Ops, Fraud Detection, Incident Response, Performance, and Compliance"
+        ],
+        "techStack": [
+            "Python",
+            "Go",
+            "FastAPI",
+            "LangGraph",
+            "Kubernetes",
+            "Kafka",
+            "Redis",
+            "PostgreSQL",
+            "Prometheus / Grafana",
+            "Docker"
+        ],
+        "schema": "Multi-Payment Ingestion (Cards, Wallets, Bank Rails, Invoices)\n              ↓\nKubernetes API Gateway & Tokenization Security Layer\n              ↓\nAI Fraud & Risk Scoring Engine (Sub-50ms Velocity & Anomaly Checks)\n              ↓\nMulti-Provider Smart Routing (Cost, Latency & Geo-Optimized)\n  ┌───────────────────────┼───────────────────────┐\n  ↓                       ↓                       ↓\nAcquiring Bank Rails    Intelligent Retry &     Self-Healing AI Engine\n(Stripe, Adyen, Banks)  Failover Switching      (Auto-Restart & Rebalance)\n  └───────────────────────┼───────────────────────┘\n              ↓\nSelf-Developing AI Agent (Continuous CI/CD Optimization & Bug Repair)\n              ↓\nReal-Time Payment Intelligence & Autonomous Financial Settlement"
     }
 ];
