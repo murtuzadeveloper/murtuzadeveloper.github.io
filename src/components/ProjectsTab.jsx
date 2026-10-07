@@ -3,7 +3,9 @@ import {
   Cpu, Workflow, BrainCircuit, Code2, CheckCircle2, ShieldAlert,
   ShieldCheck, Layers, Globe, Activity, Zap, Database, Server,
   Lock, MessageSquare, BarChart3, Terminal, ChevronRight,
-  Search, ExternalLink, Sparkles, Filter, Eye, ArrowRight, CornerDownRight
+  Search, ExternalLink, Sparkles, Filter, Eye, ArrowRight,
+  Download, FileText, X, Maximize2, Phone, Headphones, UserCheck,
+  AlertTriangle, Check, Shield
 } from 'lucide-react';
 import { projectsData } from '../data';
 
@@ -26,7 +28,12 @@ const iconMap = {
   Lock,
   Zap,
   Terminal,
-  Cpu
+  Cpu,
+  Phone,
+  Headphones,
+  UserCheck,
+  AlertTriangle,
+  Shield
 };
 
 const getIcon = (iconName, size = 18, className = '') => {
@@ -39,8 +46,42 @@ export const ProjectsTab = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSchemaProject, setActiveSchemaProject] = useState(null);
   const [expandedProjectId, setExpandedProjectId] = useState(null);
+  const [selectedImageModal, setSelectedImageModal] = useState(null);
 
-  const categories = ['All', 'Agentic AI', 'Enterprise AI', 'AI Factory', 'Microservices', 'Real-Time Systems', 'Data & Analytics', 'Enterprise RAG', 'DevSecOps', 'QA & Testing', 'AIOps'];
+  // Close modal on Escape key press
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedImageModal(null);
+      }
+    };
+    if (selectedImageModal) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImageModal]);
+
+  const categories = [
+    'All',
+    'AI Infrastructure',
+    'Agentic AI',
+    'Enterprise AI',
+    'FinTech AI',
+    'Voice & Omni-Channel AI',
+    'AI Security',
+    'AI Factory',
+    'Enterprise RAG',
+    'DevSecOps',
+    'QA & Testing',
+    'AIOps',
+    'Microservices',
+    'Real-Time Systems',
+    'Data & Analytics'
+  ];
 
   const filteredProjects = projectsData.filter((project) => {
     const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
@@ -55,17 +96,17 @@ export const ProjectsTab = () => {
 
   const getAccentColor = (color) => {
     switch (color) {
-      case 'cyan': return { border: 'border-cyan-500/40', text: 'text-cyan-400', bg: 'bg-cyan-500/10', glow: 'shadow-[0_0_30px_rgba(6,182,212,0.2)]', badge: 'bg-cyan-950/80 border-cyan-500/30 text-cyan-400' };
-      case 'purple': return { border: 'border-purple-500/40', text: 'text-purple-400', bg: 'bg-purple-500/10', glow: 'shadow-[0_0_30px_rgba(168,85,247,0.2)]', badge: 'bg-purple-950/80 border-purple-500/30 text-purple-400' };
-      case 'emerald': return { border: 'border-emerald-500/40', text: 'text-emerald-400', bg: 'bg-emerald-500/10', glow: 'shadow-[0_0_30px_rgba(16,185,129,0.2)]', badge: 'bg-emerald-950/80 border-emerald-500/30 text-emerald-400' };
-      case 'blue': return { border: 'border-blue-500/40', text: 'text-blue-400', bg: 'bg-blue-500/10', glow: 'shadow-[0_0_30px_rgba(59,130,246,0.2)]', badge: 'bg-blue-950/80 border-blue-500/30 text-blue-400' };
-      case 'indigo': return { border: 'border-indigo-500/40', text: 'text-indigo-400', bg: 'bg-indigo-500/10', glow: 'shadow-[0_0_30px_rgba(99,102,241,0.2)]', badge: 'bg-indigo-950/80 border-indigo-500/30 text-indigo-400' };
-      case 'sky': return { border: 'border-sky-500/40', text: 'text-sky-400', bg: 'bg-sky-500/10', glow: 'shadow-[0_0_30px_rgba(14,165,233,0.2)]', badge: 'bg-sky-950/80 border-sky-500/30 text-sky-400' };
-      case 'teal': return { border: 'border-teal-500/40', text: 'text-teal-400', bg: 'bg-teal-500/10', glow: 'shadow-[0_0_30px_rgba(20,184,166,0.2)]', badge: 'bg-teal-950/80 border-teal-500/30 text-teal-400' };
-      case 'red': return { border: 'border-red-500/40', text: 'text-red-400', bg: 'bg-red-500/10', glow: 'shadow-[0_0_30px_rgba(239,68,68,0.2)]', badge: 'bg-red-950/80 border-red-500/30 text-red-400' };
-      case 'yellow': return { border: 'border-yellow-500/40', text: 'text-yellow-400', bg: 'bg-yellow-500/10', glow: 'shadow-[0_0_30px_rgba(234,179,8,0.2)]', badge: 'bg-yellow-950/80 border-yellow-500/30 text-yellow-400' };
-      case 'rose': return { border: 'border-rose-500/40', text: 'text-rose-400', bg: 'bg-rose-500/10', glow: 'shadow-[0_0_30px_rgba(244,63,94,0.2)]', badge: 'bg-rose-950/80 border-rose-500/30 text-rose-400' };
-      default: return { border: 'border-cyan-500/40', text: 'text-cyan-400', bg: 'bg-cyan-500/10', glow: 'shadow-[0_0_30px_rgba(6,182,212,0.2)]', badge: 'bg-cyan-950/80 border-cyan-500/30 text-cyan-400' };
+      case 'cyan': return { border: 'border-cyan-500/40', text: 'text-cyan-400', bg: 'bg-cyan-500/10', glow: 'shadow-[0_0_35px_rgba(6,182,212,0.25)]', badge: 'bg-cyan-950/80 border-cyan-500/30 text-cyan-400', button: 'from-cyan-500 to-blue-600' };
+      case 'purple': return { border: 'border-purple-500/40', text: 'text-purple-400', bg: 'bg-purple-500/10', glow: 'shadow-[0_0_35px_rgba(168,85,247,0.25)]', badge: 'bg-purple-950/80 border-purple-500/30 text-purple-400', button: 'from-purple-500 to-indigo-600' };
+      case 'emerald': return { border: 'border-emerald-500/40', text: 'text-emerald-400', bg: 'bg-emerald-500/10', glow: 'shadow-[0_0_35px_rgba(16,185,129,0.25)]', badge: 'bg-emerald-950/80 border-emerald-500/30 text-emerald-400', button: 'from-emerald-500 to-teal-600' };
+      case 'blue': return { border: 'border-blue-500/40', text: 'text-blue-400', bg: 'bg-blue-500/10', glow: 'shadow-[0_0_35px_rgba(59,130,246,0.25)]', badge: 'bg-blue-950/80 border-blue-500/30 text-blue-400', button: 'from-blue-500 to-cyan-600' };
+      case 'indigo': return { border: 'border-indigo-500/40', text: 'text-indigo-400', bg: 'bg-indigo-500/10', glow: 'shadow-[0_0_35px_rgba(99,102,241,0.25)]', badge: 'bg-indigo-950/80 border-indigo-500/30 text-indigo-400', button: 'from-indigo-500 to-purple-600' };
+      case 'sky': return { border: 'border-sky-500/40', text: 'text-sky-400', bg: 'bg-sky-500/10', glow: 'shadow-[0_0_35px_rgba(14,165,233,0.25)]', badge: 'bg-sky-950/80 border-sky-500/30 text-sky-400', button: 'from-sky-500 to-blue-600' };
+      case 'teal': return { border: 'border-teal-500/40', text: 'text-teal-400', bg: 'bg-teal-500/10', glow: 'shadow-[0_0_35px_rgba(20,184,166,0.25)]', badge: 'bg-teal-950/80 border-teal-500/30 text-teal-400', button: 'from-teal-500 to-emerald-600' };
+      case 'red': return { border: 'border-red-500/40', text: 'text-red-400', bg: 'bg-red-500/10', glow: 'shadow-[0_0_35px_rgba(239,68,68,0.25)]', badge: 'bg-red-950/80 border-red-500/30 text-red-400', button: 'from-red-500 to-rose-600' };
+      case 'yellow': return { border: 'border-yellow-500/40', text: 'text-yellow-400', bg: 'bg-yellow-500/10', glow: 'shadow-[0_0_35px_rgba(234,179,8,0.25)]', badge: 'bg-yellow-950/80 border-yellow-500/30 text-yellow-400', button: 'from-yellow-500 to-amber-600' };
+      case 'rose': return { border: 'border-rose-500/40', text: 'text-rose-400', bg: 'bg-rose-500/10', glow: 'shadow-[0_0_35px_rgba(244,63,94,0.25)]', badge: 'bg-rose-950/80 border-rose-500/30 text-rose-400', button: 'from-rose-500 to-red-600' };
+      default: return { border: 'border-cyan-500/40', text: 'text-cyan-400', bg: 'bg-cyan-500/10', glow: 'shadow-[0_0_35px_rgba(6,182,212,0.25)]', badge: 'bg-cyan-950/80 border-cyan-500/30 text-cyan-400', button: 'from-cyan-500 to-blue-600' };
     }
   };
 
@@ -79,37 +120,37 @@ export const ProjectsTab = () => {
         <div className="relative z-10 max-w-4xl">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span>SYS: 10_SYSTEM_ARCHITECTURES_ACTIVE</span>
+            <span>SYS: 20_SYSTEM_ARCHITECTURES_ACTIVE</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white italic tracking-tight uppercase mb-4 leading-tight">
             AUTONOMOUS AI & <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">
-              DISTRIBUTED SYSTEMS
+              HYPERSCALE ARCHITECTURES
             </span>
           </h2>
 
           <p className="text-slate-300 text-base sm:text-lg font-light leading-relaxed max-w-3xl">
-            10 production-grade system blueprints covering Autonomous Multi-Agent Swarms, Enterprise RAG Intelligence, Cloud-Native Microservices, DevSecOps Automated Remediation, and Real-Time AIOps Observability.
+            20 production-grade system blueprints covering Trillion-Dollar AI Infrastructure, LangGraph + MCP Swarms, Autonomous FinTech Platforms, Computer Vision Security, Omni-Channel Voice Call Centers, Enterprise RAG, and Cloud-Native Microservices.
           </p>
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-white/10">
             <div className="bg-slate-900/60 border border-white/5 p-4 rounded-2xl">
-              <span className="text-2xl sm:text-3xl font-mono font-black text-cyan-400">10</span>
+              <span className="text-2xl sm:text-3xl font-mono font-black text-cyan-400">20</span>
               <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Full Architectures</p>
             </div>
             <div className="bg-slate-900/60 border border-white/5 p-4 rounded-2xl">
-              <span className="text-2xl sm:text-3xl font-mono font-black text-purple-400">Multi-Agent</span>
-              <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Orchestration Loops</p>
+              <span className="text-2xl sm:text-3xl font-mono font-black text-blue-400">$1T Scale</span>
+              <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">AI Infrastructure</p>
             </div>
             <div className="bg-slate-900/60 border border-white/5 p-4 rounded-2xl">
-              <span className="text-2xl sm:text-3xl font-mono font-black text-emerald-400">DevSecOps</span>
-              <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Shift-Left Security</p>
+              <span className="text-2xl sm:text-3xl font-mono font-black text-purple-400">MCP + Swarm</span>
+              <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Multi-Agent Systems</p>
             </div>
             <div className="bg-slate-900/60 border border-white/5 p-4 rounded-2xl">
-              <span className="text-2xl sm:text-3xl font-mono font-black text-blue-400">RAG & AIOps</span>
-              <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Hybrid Intelligence</p>
+              <span className="text-2xl sm:text-3xl font-mono font-black text-emerald-400">Voice & Vision</span>
+              <p className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider mt-1">Omni-Channel Ops</p>
             </div>
           </div>
         </div>
@@ -124,7 +165,7 @@ export const ProjectsTab = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search projects by title, tech stack (e.g. LangGraph, Kafka, RAG, Playwright)..."
+            placeholder="Search 20 projects by title, tech stack (e.g. GB300, LangGraph, MCP, Asterisk, RAG)..."
             className="w-full bg-slate-900/80 border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all"
           />
           {searchQuery && (
@@ -167,18 +208,23 @@ export const ProjectsTab = () => {
               className={`relative rounded-[2.5rem] bg-slate-900/40 backdrop-blur-2xl border ${accent.border} p-6 sm:p-10 transition-all duration-500 hover:${accent.glow} overflow-hidden group`}
             >
               {/* Background ambient glow */}
-              <div className={`absolute top-0 right-0 w-80 h-80 ${accent.bg} rounded-full blur-[90px] pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity`} />
+              <div className={`absolute top-0 right-0 w-96 h-96 ${accent.bg} rounded-full blur-[100px] pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity`} />
 
               {/* Top Header */}
               <div className="relative z-10 flex flex-wrap items-start justify-between gap-4 mb-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="max-w-3xl">
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
                     <span className={`text-sm font-mono font-black ${accent.text} px-3 py-1 rounded-lg ${accent.bg} border ${accent.border}`}>
                       #{project.number}
                     </span>
                     <span className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full border ${accent.badge}`}>
                       {project.category}
                     </span>
+                    {project.pdfUrl && (
+                      <span className="text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/40 flex items-center gap-1.5 animate-pulse">
+                        <FileText size={12} /> ACTION & BUSINESS PLAN ATTACHED
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-2xl sm:text-4xl font-black text-white italic uppercase tracking-tight">
                     {project.title}
@@ -188,7 +234,16 @@ export const ProjectsTab = () => {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
+                  {project.image && (
+                    <button
+                      onClick={() => setSelectedImageModal({ url: project.image, title: project.title, number: project.number })}
+                      className="px-4 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-white/10 text-xs font-mono text-slate-300 hover:text-white flex items-center gap-2 transition-all shadow-md"
+                    >
+                      <Eye size={14} className={accent.text} />
+                      <span>Inspect Diagram</span>
+                    </button>
+                  )}
                   <button
                     onClick={() => setActiveSchemaProject(activeSchemaProject === project.id ? null : project.id)}
                     className="px-4 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-white/10 text-xs font-mono text-slate-300 hover:text-white flex items-center gap-2 transition-all shadow-md"
@@ -204,7 +259,82 @@ export const ProjectsTab = () => {
                 {project.description}
               </p>
 
-              {/* ASCII Schema Modal/Box (if active) */}
+              {/* SPECIAL: Project 11 PDF Action Plan Download Banner */}
+              {project.pdfUrl && (
+                <div className="relative z-10 mb-8 p-6 rounded-3xl bg-gradient-to-r from-blue-950/80 via-slate-900/90 to-indigo-950/80 border-2 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3.5 rounded-2xl bg-blue-500/20 text-blue-400 border border-blue-500/40 shrink-0">
+                        <FileText size={28} />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-[10px] font-mono tracking-widest uppercase bg-blue-500/30 text-blue-300 px-2.5 py-0.5 rounded-full border border-blue-400/40">
+                            OFFICIAL DOCUMENTATION
+                          </span>
+                          <span className="text-xs font-mono text-slate-400">{project.pdfSize || '3.4 MB'} PDF</span>
+                        </div>
+                        <h4 className="text-lg font-black text-white uppercase tracking-tight">
+                          {project.pdfTitle || '11. Action Plan Business_Plan.pdf'}
+                        </h4>
+                        <p className="text-xs text-slate-300 mt-1 max-w-xl">
+                          Executive investment thesis, 7 revenue monetization engines, AI model router control plane, 90-day execution milestones & $1T financial architecture blueprint.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 shrink-0">
+                      <a
+                        href={project.pdfUrl}
+                        download={project.pdfName || '11. Action Plan Business_Plan.pdf'}
+                        className="px-5 py-3 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white text-xs font-mono font-black uppercase tracking-wider flex items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95 transition-all"
+                      >
+                        <Download size={16} />
+                        <span>Download Plan (PDF)</span>
+                      </a>
+                      <a
+                        href={project.pdfUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-700 border border-white/10 text-slate-300 hover:text-white transition-all shadow-md"
+                        title="Open PDF in new tab"
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Blueprint Image Preview Thumbnail */}
+              {project.image && (
+                <div className="relative z-10 mb-8 rounded-2xl overflow-hidden border border-white/10 bg-slate-950/80 group/img shadow-2xl">
+                  <div
+                    onClick={() => setSelectedImageModal({ url: project.image, title: project.title, number: project.number })}
+                    className="relative cursor-pointer aspect-video max-h-[360px] sm:max-h-[420px] w-full overflow-hidden flex items-center justify-center bg-black/60"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-contain group-hover/img:scale-102 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover/img:opacity-30 transition-opacity" />
+                    
+                    {/* Hover Overlay Tag */}
+                    <div className="absolute bottom-4 right-4 px-4 py-2 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/20 text-white text-xs font-mono flex items-center gap-2 shadow-lg group-hover/img:scale-105 transition-transform">
+                      <Maximize2 size={14} className={accent.text} />
+                      <span>Click to Enlarge Architecture</span>
+                    </div>
+
+                    <div className="absolute top-4 left-4 px-3 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 text-[10px] font-mono text-slate-300">
+                      BLUEPRINT_ID: #{project.number}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ASCII Schema Box (if active) */}
               {activeSchemaProject === project.id && (
                 <div className="relative z-10 mb-8 p-6 rounded-2xl bg-black/90 border border-emerald-500/40 font-mono text-xs text-emerald-400 overflow-x-auto shadow-inner animate-in fade-in zoom-in-95 duration-300">
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400 text-[10px] uppercase tracking-widest">
@@ -212,6 +342,75 @@ export const ProjectsTab = () => {
                     <span className="text-emerald-400">STATUS: VERIFIED</span>
                   </div>
                   <pre className="leading-relaxed whitespace-pre font-mono">{project.schema}</pre>
+                </div>
+              )}
+
+              {/* Special: Project 11 Commercial Surfaces */}
+              {project.commercialSurfaces && (
+                <div className="relative z-10 mb-8">
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-3 flex items-center gap-2">
+                    <Cpu size={14} /> 5 Commercial Product Surfaces:
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                    {project.commercialSurfaces.map((surf, idx) => (
+                      <div key={idx} className="p-3.5 rounded-xl bg-blue-950/30 border border-blue-500/20 flex flex-col justify-between">
+                        <div>
+                          <div className="flex items-center justify-between text-blue-400 text-xs font-bold mb-1.5">
+                            <span>{surf.name}</span>
+                            {getIcon(surf.icon, 14)}
+                          </div>
+                          <p className="text-[11px] text-slate-300 leading-snug">{surf.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Special: Project 11 Revenue Engines Table */}
+              {project.revenueEngines && (
+                <div className="relative z-10 mb-8 p-5 rounded-2xl bg-slate-950/80 border border-blue-500/20 overflow-x-auto">
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-3 flex items-center gap-2">
+                    <BarChart3 size={14} /> 7 Compounding Revenue Engines (Hardware + Software Moat)
+                  </h4>
+                  <table className="w-full text-left text-xs text-slate-300">
+                    <thead>
+                      <tr className="border-b border-white/10 text-[10px] font-mono uppercase text-slate-500">
+                        <th className="py-2 pr-4">Engine</th>
+                        <th className="py-2 pl-4">Monetization & Commercial Model</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5">
+                      {project.revenueEngines.map((reng, idx) => (
+                        <tr key={idx} className="hover:bg-blue-500/5 transition-colors">
+                          <td className="py-2.5 pr-4 font-bold text-blue-300 font-mono">{reng.engine}</td>
+                          <td className="py-2.5 pl-4 text-slate-300">{reng.model}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* Special: Project 20 Discovery Checklist */}
+              {project.discoveryDimensions && (
+                <div className="relative z-10 mb-8 p-5 rounded-2xl bg-slate-950/80 border border-emerald-500/20">
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-3 flex items-center gap-2">
+                    <CheckCircle2 size={14} /> 18-Dimension Enterprise Discovery & Architecture Scoping Framework
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                    {project.discoveryDimensions.map((dim, idx) => (
+                      <div key={idx} className="p-2.5 rounded-xl bg-slate-900/60 border border-white/5 flex items-start gap-2.5">
+                        <span className="text-[10px] font-mono text-emerald-400 font-bold px-1.5 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/30">
+                          {dim.num}
+                        </span>
+                        <div>
+                          <h5 className="text-xs font-bold text-white leading-tight">{dim.title}</h5>
+                          <p className="text-[10px] text-slate-400 mt-0.5">{dim.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -400,6 +599,76 @@ export const ProjectsTab = () => {
           );
         })}
       </div>
+
+      {/* Lightbox Modal for Full-Screen Blueprint Inspection */}
+      {selectedImageModal && (
+        <div
+          onClick={() => setSelectedImageModal(null)}
+          className="fixed inset-0 z-[10000] bg-black/95 backdrop-blur-2xl flex flex-col p-4 sm:p-8 animate-in fade-in duration-300 cursor-pointer select-none"
+        >
+          {/* Floating High-Visibility Close Button (Top Right) */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImageModal(null);
+            }}
+            className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[10002] px-5 py-2.5 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-mono text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-[0_0_30px_rgba(239,68,68,0.9)] hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/20"
+          >
+            <X size={18} />
+            <span>CLOSE [ESC]</span>
+          </button>
+
+          {/* Modal Header */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center justify-between gap-4 pb-4 border-b border-white/10 pr-36 sm:pr-40 cursor-default"
+          >
+            <div className="flex items-center gap-3">
+              <span className="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 text-xs font-mono font-bold">
+                #{selectedImageModal.number}
+              </span>
+              <h3 className="text-base sm:text-xl font-black text-white uppercase italic tracking-tight truncate max-w-md sm:max-w-xl">
+                {selectedImageModal.title}
+              </h3>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <a
+                href={selectedImageModal.url}
+                download
+                onClick={(e) => e.stopPropagation()}
+                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-white/10 text-xs font-mono text-white flex items-center gap-2 transition-all shadow-md cursor-pointer hover:border-cyan-500/40"
+              >
+                <Download size={14} />
+                <span className="hidden sm:inline">Save Image</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Modal Image Container */}
+          <div
+            onClick={() => setSelectedImageModal(null)}
+            className="flex-1 overflow-auto flex flex-col items-center justify-center p-2 sm:p-6 cursor-pointer"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[75vh] max-w-full rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.9)] border border-white/15 bg-slate-950 cursor-default"
+            >
+              <img
+                src={selectedImageModal.url}
+                alt={selectedImageModal.title}
+                className="max-h-[75vh] w-auto max-w-full object-contain"
+              />
+            </div>
+
+            {/* Bottom Quick-Dismiss Bar */}
+            <div className="mt-4 flex items-center gap-3 text-slate-400 text-xs font-mono">
+              <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+              <span>Click anywhere outside image or press <strong className="text-white bg-slate-800 px-2 py-0.5 rounded border border-white/10">ESC</strong> to exit</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

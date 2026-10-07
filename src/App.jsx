@@ -51,7 +51,7 @@ const App = () => {
 
       {/* Liquid Cursor (Desktop Only) */}
       <div
-        className="fixed pointer-events-none z-[999] transition-transform duration-300 ease-out hidden md:flex items-center justify-center"
+        className="fixed pointer-events-none z-[999999] transition-transform duration-300 ease-out hidden md:flex items-center justify-center"
         style={{ transform: `translate3d(${mousePos.x - 20}px, ${mousePos.y - 20}px, 0)` }}
       >
         <div
