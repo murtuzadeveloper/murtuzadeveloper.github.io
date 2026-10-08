@@ -5,7 +5,8 @@ import {
   Lock, MessageSquare, BarChart3, Terminal, ChevronRight,
   Search, ExternalLink, Sparkles, Filter, Eye, ArrowRight,
   Download, FileText, X, Maximize2, Phone, Headphones, UserCheck,
-  AlertTriangle, Check, Shield
+  AlertTriangle, Check, Shield, Radio, Target, TrendingUp, Users,
+  Home, Building
 } from 'lucide-react';
 import { projectsData } from '../data';
 
@@ -33,7 +34,13 @@ const iconMap = {
   Headphones,
   UserCheck,
   AlertTriangle,
-  Shield
+  Shield,
+  Radio,
+  Target,
+  TrendingUp,
+  Users,
+  Home,
+  Building
 };
 
 const getIcon = (iconName, size = 18, className = '') => {
@@ -67,6 +74,7 @@ export const ProjectsTab = () => {
 
   const categories = [
     'All',
+    'Real Estate AI',
     'AI Infrastructure',
     'Agentic AI',
     'Enterprise AI',
@@ -131,7 +139,7 @@ export const ProjectsTab = () => {
           </h2>
 
           <p className="text-slate-300 text-base sm:text-lg font-light leading-relaxed max-w-3xl">
-            {projectsData.length} production-grade system blueprints covering Autonomous Payroll & Payment Infrastructure, Trillion-Dollar AI Infrastructure, LangGraph + MCP Swarms, Autonomous FinTech Platforms, Computer Vision Security, Omni-Channel Voice Call Centers, Enterprise RAG, and Cloud-Native Microservices.
+            {projectsData.length} production-grade system blueprints covering Autonomous Real Estate Sales & Property Discovery, Autonomous Payroll & Payment Infrastructure, Trillion-Dollar AI Infrastructure, LangGraph + MCP Swarms, Autonomous FinTech Platforms, Computer Vision Security, Omni-Channel Voice Call Centers, Enterprise RAG, and Cloud-Native Microservices.
           </p>
 
           {/* Quick Metrics */}
@@ -165,7 +173,7 @@ export const ProjectsTab = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={`Search ${projectsData.length} projects by title, tech stack (e.g. PayPilot, Payment Gateway, GB300, LangGraph)...`}
+            placeholder={`Search ${projectsData.length} projects by title, tech stack (e.g. PropAgent AI, PayPilot, Payment Gateway, LangGraph)...`}
             className="w-full bg-slate-900/80 border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 transition-all"
           />
           {searchQuery && (
@@ -407,6 +415,67 @@ export const ProjectsTab = () => {
                         <div>
                           <h5 className="text-xs font-bold text-white leading-tight">{dim.title}</h5>
                           <p className="text-[10px] text-slate-400 mt-0.5">{dim.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Special: Project 23 Dual Customer Acquisition Engines */}
+              {project.dualAcquisitionEngines && (
+                <div className="relative z-10 mb-8 p-6 rounded-3xl bg-gradient-to-r from-emerald-950/70 via-slate-950/90 to-teal-950/70 border-2 border-emerald-500/40 shadow-[0_0_30px_rgba(16,185,129,0.15)]">
+                  <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <h4 className="text-xs font-mono uppercase tracking-widest text-emerald-400 flex items-center gap-2 font-black">
+                      <Radio size={16} className="text-emerald-400 animate-pulse" /> Dual-Engine Customer Acquisition Architecture
+                    </h4>
+                    <span className="text-[10px] font-mono text-emerald-300 bg-emerald-900/60 border border-emerald-500/40 px-3 py-1 rounded-full uppercase tracking-wider">
+                      REVERSING REAL ESTATE SALES
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {project.dualAcquisitionEngines.map((eng, idx) => (
+                      <div key={idx} className="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                        <div>
+                          <div className="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                            <span className="text-emerald-300 font-mono font-black">{eng.engine}</span>
+                          </div>
+                          <div className="mb-2.5">
+                            <span className="text-[10px] font-mono text-slate-300 uppercase tracking-wider bg-slate-800/90 px-2.5 py-1 rounded-lg border border-white/10 inline-block">
+                              Channels: <strong className="text-white">{eng.channels}</strong>
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-300 leading-relaxed">{eng.behavior}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Special: Project 23 Command Center Telemetry Dashboard */}
+              {project.commandCenterMetrics && (
+                <div className="relative z-10 mb-8 p-6 rounded-3xl bg-slate-950/90 border border-cyan-500/30 shadow-[0_0_25px_rgba(6,182,212,0.1)]">
+                  <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <h4 className="text-xs font-mono uppercase tracking-widest text-cyan-400 flex items-center gap-2 font-black">
+                      <BarChart3 size={16} className="text-cyan-400" /> Real-Time AI Sales Command Center Telemetry
+                    </h4>
+                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 border border-emerald-500/40 px-3 py-1 rounded-full flex items-center gap-1.5 font-bold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" /> LIVE PRODUCTION TELEMETRY
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                    {project.commandCenterMetrics.map((met, idx) => (
+                      <div key={idx} className="p-3.5 rounded-2xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/40 transition-all flex flex-col justify-between">
+                        <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-2">
+                          {met.label}
+                        </div>
+                        <div>
+                          <div className="text-lg sm:text-xl font-mono font-black text-white">{met.val}</div>
+                          <div className="text-[10px] font-mono text-emerald-400 font-bold mt-1 flex items-center gap-1">
+                            <span>{met.change}</span>
+                          </div>
                         </div>
                       </div>
                     ))}

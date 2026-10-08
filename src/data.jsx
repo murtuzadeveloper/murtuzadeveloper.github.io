@@ -2549,5 +2549,119 @@ export const projectsData = [
             "Docker"
         ],
         "schema": "Multi-Payment Ingestion (Cards, Wallets, Bank Rails, Invoices)\n              ↓\nKubernetes API Gateway & Tokenization Security Layer\n              ↓\nAI Fraud & Risk Scoring Engine (Sub-50ms Velocity & Anomaly Checks)\n              ↓\nMulti-Provider Smart Routing (Cost, Latency & Geo-Optimized)\n  ┌───────────────────────┼───────────────────────┐\n  ↓                       ↓                       ↓\nAcquiring Bank Rails    Intelligent Retry &     Self-Healing AI Engine\n(Stripe, Adyen, Banks)  Failover Switching      (Auto-Restart & Rebalance)\n  └───────────────────────┼───────────────────────┘\n              ↓\nSelf-Developing AI Agent (Continuous CI/CD Optimization & Bug Repair)\n              ↓\nReal-Time Payment Intelligence & Autonomous Financial Settlement"
+    },
+    {
+        "id": "propagent-ai-real-estate-platform",
+        "number": "23",
+        "title": "PropAgent AI — Autonomous AI Sales & Property Discovery Platform for Real Estate",
+        "tagline": "Find the Buyer. Understand the Buyer. Match the Property. Close the Deal. — 24/7",
+        "category": "Real Estate AI",
+        "color": "emerald",
+        "image": "/projects/23. PropAgent AI Autonomous Real Estate Platform.png",
+        "description": "An autonomous AI sales workforce and property discovery platform that inverts the traditional real estate sales model. Features dual customer acquisition engines (inbound omni-channel instant response & outbound permission-aware social media intent discovery), autonomous voice AI sales agents, Property Intent Graph™ semantic matching, 5-year investment scenario modeling, lifestyle-based consulting, predictive buyer scoring, and seamless human agent handoff CRM.",
+        "workflowType": "autonomous-real-estate-sales",
+        "workflowSteps": [
+            {
+                "step": "01",
+                "role": "Social Intent & Inbound Radar",
+                "action": "Detect buying intent across permitted social posts/comments & handle 24/7 inbound calls, WhatsApp & web inquiries",
+                "icon": "Radio"
+            },
+            {
+                "step": "02",
+                "role": "Intent Scoring & Qualification",
+                "action": "Extract budget, timeline, location, financing & family needs; assign real-time intent score (0-100)",
+                "icon": "Target"
+            },
+            {
+                "step": "03",
+                "role": "Conversational & Voice Sales Agent",
+                "action": "Conduct natural multi-turn sales discovery via ultra-low latency Voice AI phone calls & WhatsApp chat",
+                "icon": "Phone"
+            },
+            {
+                "step": "04",
+                "role": "Property Intent Graph™",
+                "action": "Multi-dimensional buyer modeling linking budget, commute, school proximity, lifestyle & investment horizons",
+                "icon": "BrainCircuit"
+            },
+            {
+                "step": "05",
+                "role": "Semantic Property Matcher",
+                "action": "Query verified property database, live inventory, payment plans & legal documents with zero hallucinations",
+                "icon": "Database"
+            },
+            {
+                "step": "06",
+                "role": "AI Investment & Lifestyle Advisor",
+                "action": "Generate 5-year conservative/base/optimistic projections, rental yields & personalized lifestyle matches",
+                "icon": "TrendingUp"
+            },
+            {
+                "step": "07",
+                "role": "Automated Viewing & Follow-Up",
+                "action": "Schedule site visits, dispatch WhatsApp brochures & execute 10-day compliant nurturing journeys",
+                "icon": "Zap"
+            },
+            {
+                "step": "08",
+                "role": "CRM Intelligence & Agent Handoff",
+                "action": "Equip human closers with 360° buyer dossier, negotiation points & purchase probability for final deal closing",
+                "icon": "UserCheck"
+            }
+        ],
+        "dualAcquisitionEngines": [
+            {
+                "engine": "Engine A — Inbound Omni-Channel Leads",
+                "channels": "WhatsApp, Phone Calls, Instagram DMs, Website Chat, Messenger, SMS, Email",
+                "behavior": "Instant sub-second response, deep conversational requirement discovery, live inventory lookup, and instant site visit booking."
+            },
+            {
+                "engine": "Engine B — Social Intent Radar (Outbound Discovery)",
+                "channels": "Permitted Social Feeds, Public Forums, Buyer Groups, Discussion Boards",
+                "behavior": "Identifies publicly expressed buying intent, scores context (Strong / Medium / Investor), and executes permission-aware compliant outreach."
+            }
+        ],
+        "commandCenterMetrics": [
+            { "label": "Total Leads Ingested", "val": "1,842", "change": "+24% MoM", "icon": "Users" },
+            { "label": "Hot Qualified Buyers", "val": "127", "change": "+32% MoM", "icon": "Target" },
+            { "label": "AI Voice / Chat Convs", "val": "463", "change": "+48% MoM", "icon": "Phone" },
+            { "label": "Site Visits Scheduled", "val": "38", "change": "+21% MoM", "icon": "CheckCircle2" },
+            { "label": "Semantic Property Matches", "val": "621", "change": "+36% MoM", "icon": "BrainCircuit" },
+            { "label": "Pipeline Deal Value", "val": "PKR 18.4 Cr", "change": "+42% MoM", "icon": "TrendingUp" }
+        ],
+        "features": [
+            "Dual Acquisition Engines: Inbound multi-channel instant AI response (WhatsApp, Web, Voice, DMs) + Outbound permission-aware social media buyer intent discovery",
+            "Autonomous AI Voice Sales Agent: Natural low-latency phone calls answering inquiries, qualifying budgets, explaining listings, and booking site visits 24/7",
+            "Property Intent Graph™: Multi-dimensional buyer modeling linking budget, lifestyle, family commute, school proximity, and investment horizons",
+            "Semantic AI Property Matching: Multi-vector property matching across school proximity, security, rental yields, price trends, and developer track record",
+            "AI Property Investment Advisor: 5-year scenario forecasting (Conservative/Base/Optimistic), rental yields, liquidity metrics, and infrastructure trend analysis",
+            "Lifestyle-Based Property Consultant: Consultative discovery tailored to family life stages, commute preferences, amenities, and luxury residential requirements",
+            "Predictive Lead Scoring & Purchase Probability: Real-time hot buyer classification (0-100 score) with ML-based closing probability and recommended actions",
+            "Controlled RAG & Source-of-Truth DB: Verified property records preventing hallucinations; queries live listings, payment plans, and legal contracts",
+            "Intelligent Human Agent Handoff: AI handles 1,000+ top-of-funnel interactions and equips human closers with 360° buyer profiles and objection briefs",
+            "Real Estate AI CRM & Autonomous Sales Manager: Integrated lead board, pipeline valuation, daily priority briefings, and auto-scheduled nurturing journeys",
+            "Omni-Channel Automated Follow-Up: 10-day personalized re-engagement journeys respecting consent, sending fresh inventory and price adjustments",
+            "AI Real Estate Marketing Content Engine: Automated multi-platform generation of luxury listing posts, Reels scripts, YouTube outlines, and email campaigns",
+            "Multi-Agent Swarm Orchestration: Specialized swarms for Discovery, Conversation, Voice Sales, Investment Analysis, Scheduling, and Safety/Compliance",
+            "Enterprise Security, Consent & Anti-Spam: Strict GDPR/telecom compliance, opt-out management, PII encryption, audit trails, and zero unauthorized scraping",
+            "White-Label AI Real Estate OS: Multi-tenant deployment supporting custom developer branding, bespoke voice personas, and dedicated database partitions"
+        ],
+        "techStack": [
+            "Python",
+            "FastAPI",
+            "Next.js",
+            "React",
+            "TypeScript",
+            "LangGraph",
+            "Vector DB (Qdrant / pgvector)",
+            "WebRTC / SIP Telephony",
+            "Whisper / Cartesia TTS",
+            "WhatsApp Cloud API",
+            "PostgreSQL",
+            "Redis",
+            "Docker / Kubernetes"
+        ],
+        "schema": "Social Media Intent & Permitted Feeds          Inbound Calls, WhatsApp, Web, SMS & DMs\n               │                                                    │\n               ▼                                                    ▼\n   [Engine B: Social Intent Radar]                         [Engine A: Omni-Channel Gate]\n               │                                                    │\n               └──────────────────────────┬─────────────────────────┘\n                                          │\n                                          ▼\n                        [AI Buyer Qualification & Intent Engine]\n                        (Budget, Timeline, Financing, Purpose)\n                                          │\n                                          ▼\n                               [Property Intent Graph™]\n                   (Location + Lifestyle + Family + Investment Goal)\n                                          │\n                  ┌───────────────────────┴───────────────────────┐\n                  ▼                                               ▼\n     [AI Voice & Chat Sales Agent]                  [AI Property Investment Advisor]\n   (24/7 Phone, WhatsApp, Inquiries)               (5-Yr Forecast, Yield, Scenario)\n                  │                                               │\n                  └───────────────────────┬───────────────────────┘\n                                          │\n                                          ▼\n                     [Semantic Property Matcher & RAG Brain]\n                     (Live Property DB, Contracts, Price Data)\n                                          │\n                                          ▼\n                     [Automated Viewing & Follow-Up Journey]\n                                          │\n                                          ▼\n                     [Real Estate AI CRM & Command Center]\n                    (Lead Scoring 0-100 & Hot Buyer Dossier)\n                                          │\n                                          ▼\n               [Human Closer Handoff → Negotiation → Closed Sale]"
     }
 ];
