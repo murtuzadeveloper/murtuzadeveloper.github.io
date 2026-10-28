@@ -1,0 +1,884 @@
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  Menu, X, Sparkles, MessageSquare, Linkedin, Github,
+  History, Award, Binary, Zap, CheckCircle2, Headphones, Layers, Workflow, BarChart3, Activity,
+  Phone, Lock, ShieldAlert, Bot, BrainCircuit, ShieldCheck, Globe,
+  Users, Calendar, Eye
+} from 'lucide-react';
+import {
+  tabs, contactData, educationData, googleBadges, experienceData,
+  skillsData, servicesData, industriesData, aiSolutionsData,
+  cyberSecurityData, aiSecurityData, antiTerrorData
+} from './data';
+import MatrixName, { MatrixRainBackground } from './components/MatrixName';
+import ProjectsTab from './components/ProjectsTab';
+import CyberBackground, { TAB_COLOR_PALETTES } from './components/CyberBackground';
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('Contact');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [cursorType, setCursorType] = useState('default');
+  const [visitorStats, setVisitorStats] = useState({
+    totalVisitors: null,
+    todayVisitors: null,
+    onlineVisitors: null,
+    pageViews: null,
+    status: 'loading'
+  });
+
+  useEffect(() => {
+    const handleStatsUpdate = (e) => {
+      if (e.detail) {
+        setVisitorStats(e.detail);
+      }
+    };
+    window.addEventListener('visitor-stats:updated', handleStatsUpdate);
+
+    if (window.VisitorCounter && window.VisitorCounter.getStats) {
+      const stats = window.VisitorCounter.getStats();
+      if (stats && stats.lastUpdated) {
+        setVisitorStats(stats);
+      }
+    }
+
+    return () => {
+      window.removeEventListener('visitor-stats:updated', handleStatsUpdate);
+    };
+  }, []);
+
+  // Record catalog page view when Projects tab (wholesale catalog showcase) is visited
+  useEffect(() => {
+    if (activeTab === 'Projects' && window.VisitorCounter?.recordCatalogPageView) {
+      window.VisitorCounter.recordCatalogPageView();
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  const handleContact = () => {
+    window.open("https://wa.me/923060824762", "_blank");
+  };
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+    setIsMenuOpen(false);
+  };
+
+  const currentTabColor = tabs.find(t => t.name === activeTab)?.color || 'blue';
+  const currentTheme = TAB_COLOR_PALETTES[currentTabColor] || TAB_COLOR_PALETTES.blue;
+
+  return (
+    <div className="min-h-screen bg-black text-slate-200 font-sans selection:bg-blue-500/30 selection:text-white scroll-smooth cursor-none overflow-x-hidden relative">
+
+      {/* Interactive High-Tech Cyber & Neural Constellation Background */}
+      <CyberBackground activeTabColor={currentTabColor} mousePos={mousePos} />
+
+      {/* Liquid Cursor (Desktop Only) */}
+      <div
+        className="fixed pointer-events-none z-[999999] transition-transform duration-300 ease-out hidden md:flex items-center justify-center"
+        style={{ transform: `translate3d(${mousePos.x - 20}px, ${mousePos.y - 20}px, 0)` }}
+      >
+        <div
+          className={`w-10 h-10 rounded-full border-2 transition-all duration-500 ${cursorType === 'pointer' ? 'scale-[2.5] border-dashed rotate-90' : 'scale-100'}`}
+          style={{
+            borderColor: `${currentTheme.primary}80`,
+            backgroundColor: cursorType === 'pointer' ? `${currentTheme.primary}15` : 'transparent',
+            boxShadow: `0 0 16px ${currentTheme.primary}40`
+          }}
+        />
+        <div
+          className={`absolute w-1.5 h-1.5 rounded-full transition-transform duration-500 ${cursorType === 'pointer' ? 'scale-0' : 'scale-100'}`}
+          style={{
+            backgroundColor: currentTheme.accent,
+            boxShadow: `0 0 8px ${currentTheme.primary}`
+          }}
+        />
+      </div>
+
+      {/* Navigation */}
+      <nav className={`fixed top-0 w-full z-[100] transition-all duration-700 ${scrolled ? 'bg-black/85 backdrop-blur-2xl border-b border-white/10 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.8)]' : 'bg-transparent py-4'}`}>
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div onMouseEnter={() => setCursorType('pointer')} onMouseLeave={() => setCursorType('default')} className="flex items-center gap-4 cursor-pointer group" onClick={() => handleTabClick('Contact')}>
+            <div
+              className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-white text-2xl shadow-xl transition-all duration-1000 group-hover:rotate-[360deg] border border-white/10"
+              style={{
+                background: `linear-gradient(135deg, ${currentTheme.primary}, #090d16)`,
+                boxShadow: `0 0 20px ${currentTheme.primary}50`
+              }}
+            >
+              M
+            </div>
+            <div>
+              <h1 className="text-xl font-black text-white tracking-tighter">MURTUZA</h1>
+              <span className="text-[9px] text-slate-400 tracking-[0.3em] uppercase font-bold opacity-80 block">Systems Architect</span>
+            </div>
+          </div>
+
+          {/* Desktop Tabs */}
+          <div className="hidden lg:flex flex-wrap items-center justify-center gap-1 bg-slate-950/70 p-1.5 rounded-full border border-white/10 backdrop-blur-xl max-w-[62%] shadow-2xl">
+            {tabs.map((tab) => {
+              const tabTheme = TAB_COLOR_PALETTES[tab.color] || TAB_COLOR_PALETTES.blue;
+              const isActive = activeTab === tab.name;
+              return (
+                <button
+                  key={tab.name}
+                  onMouseEnter={() => setCursorType('pointer')}
+                  onMouseLeave={() => setCursorType('default')}
+                  onClick={() => handleTabClick(tab.name)}
+                  className={`px-4 py-2 rounded-full text-[10px] sm:text-[9px] font-black transition-all flex items-center gap-1 uppercase tracking-widest relative overflow-hidden group ${isActive ? 'text-white' : 'text-slate-400 hover:text-white'
+                    }`}
+                >
+                  {isActive && (
+                    <div
+                      className="absolute inset-0 shadow-lg animate-in zoom-in-75 duration-500 rounded-full"
+                      style={{
+                        backgroundColor: tabTheme.primary,
+                        boxShadow: `0 0 20px ${tabTheme.primary}90`
+                      }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5">{tab.icon}<span className="hidden xl:inline">{tab.name}</span></span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={handleContact}
+              onMouseEnter={() => setCursorType('pointer')}
+              onMouseLeave={() => setCursorType('default')}
+              className="hidden md:flex bg-white text-black px-6 py-2.5 rounded-full text-[18px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,255,255,0.4)]"
+            >
+              Secure Hire <Sparkles size={18} className="ml-2 inline text-blue-600" />
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className="lg:hidden text-white p-2 focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-white/10 shadow-2xl animate-in slide-in-from-top-2">
+            <div className="flex flex-col p-4 gap-2 max-h-[70vh] overflow-y-auto">
+              {tabs.map((tab) => {
+                const tabTheme = TAB_COLOR_PALETTES[tab.color] || TAB_COLOR_PALETTES.blue;
+                const isActive = activeTab === tab.name;
+                return (
+                  <button
+                    key={tab.name}
+                    onClick={() => handleTabClick(tab.name)}
+                    className="flex items-center gap-4 px-6 py-4 rounded-xl text-left font-black tracking-widest uppercase text-xs transition-all text-slate-300"
+                    style={isActive ? {
+                      backgroundColor: `${tabTheme.primary}25`,
+                      color: tabTheme.accent,
+                      borderColor: `${tabTheme.primary}60`,
+                      borderWidth: '1px',
+                      boxShadow: `0 0 15px ${tabTheme.primary}30`
+                    } : {}}
+                  >
+                    {tab.icon} {tab.name}
+                  </button>
+                );
+              })}
+              <button
+                onClick={handleContact}
+                className="mt-4 bg-white text-black px-6 py-4 rounded-xl text-xs font-black uppercase tracking-widest text-center"
+              >
+                Secure Hire
+              </button>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      <main className="relative z-10 pt-32 md:pt-40 pb-32 px-6 max-w-7xl mx-auto min-h-screen">
+
+
+
+
+
+
+
+
+
+
+
+        {/* CONTACT & ABOUT (Tab 1) */}
+        {activeTab === 'Contact' && (
+          <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
+            <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div>
+                <div className="inline-flex px-6 py-2 bg-black border border-white/10 rounded-full text-[10px] font-black text-blue-400 tracking-[0.3em] uppercase mb-10">
+                  <Binary size={18} className="mr-2" /> established 2009
+                </div>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tighter">
+                  WE BUILD <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600">THE FUTURE.</span>
+                </h1>
+
+                <div className="flex flex-col gap-2 mb-8 text-sm font-bold tracking-wider text-emerald-400">
+                  <span className="flex items-center gap-2"><Phone size={16} /> {contactData.phone} (WhatsApp Contact Only)</span>
+                  <span className="flex items-center gap-2"><MessageSquare size={16} /> {contactData.email}</span>
+                </div>
+
+                <div className="text-[11px] md:text-xs font-black text-slate-300 uppercase tracking-widest leading-loose mb-8 bg-slate-900/50 p-6 rounded-3xl border border-white/5">
+                  {contactData.roles.split('\n').map((line, i) => <div key={i} className="mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">{line}</div>)}
+                </div>
+
+                <p className="text-sm md:text-base text-slate-400 font-light leading-relaxed mb-12 max-w-xl text-justify">
+                  {contactData.bio}
+                </p>
+              </div>
+
+
+
+
+
+              <div className="relative min-h-[560px] sm:min-h-[640px] lg:h-[700px] w-full max-w-xl mx-auto lg:max-w-none block">
+                <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-3xl border border-emerald-500/20 rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] p-6 sm:p-8 lg:p-12 flex flex-col justify-between hover:border-emerald-500/60 transition-all duration-500 rotate-0 lg:rotate-3 overflow-hidden group shadow-[0_0_50px_rgba(16,185,129,0.1)] hover:shadow-[0_0_80px_rgba(16,185,129,0.25)]">
+                  {/* Matrix Rain Canvas Background */}
+                  <MatrixRainBackground opacity={1} color="#29e229ff" />
+
+                  {/* Top Profile Photo & Status */}
+                  <div className="relative z-10 flex items-start justify-between gap-4 sm:gap-6">
+                    {/* Profile Image */}
+                    <div className="relative group/avatar shrink-0">
+
+                      {/* Cyber Ambient Glow */}
+                      <div className="absolute -inset-2 sm:-inset-3 bg-gradient-to-r from-emerald-500/60 to-cyan-500/60 rounded-[1.5rem] sm:rounded-[2rem] blur-lg opacity-60 group-hover/avatar:opacity-100 transition-all duration-500" />
+
+                      {/* Image Container */}
+                      <div className="relative w-48 h-48 xs:w-56 xs:h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border-2 border-emerald-400/50 bg-slate-900 shadow-[0_0_40px_rgba(16,185,129,0.4)] group-hover/avatar:border-emerald-300 transition-all duration-500">
+
+                        <img
+                          src="/vite.svg"
+                          alt="Murtuza KhalidSaleem"
+                          className="w-full h-full object-cover object-top group-hover/avatar:scale-105 transition-transform duration-500"
+                        />
+
+                        {/* Matrix overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/60 via-transparent to-emerald-400/10 pointer-events-none" />
+
+                        {/* SYS: ONLINE - Bottom of Image */}
+                        <div className="absolute bottom-3 left-3 right-3 flex justify-center z-20">
+                          <span className="text-[9px] sm:text-[10px] font-mono text-emerald-400 uppercase tracking-widest bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 px-3 py-1.5 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.3)] flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" />
+                            SYSTEM: ONLINE
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <Zap
+                      size={28}
+                      className="text-emerald-400 animate-pulse drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]"
+                    />
+                  </div>
+
+                  {/* Main Matrix Text */}
+                  <div className="relative z-10 text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-white italic leading-none my-3 sm:my-4">
+                    <MatrixName text="MURTUZA KHALID SALEEM" speed={40} revealDelay={3} />
+                  </div>
+
+                  {/* Status Bar */}
+                  <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 border-t border-white/5 pt-3 sm:pt-4">
+                    <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-emerald-400 font-mono font-black tracking-widest">
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-emerald-400 rounded-full animate-ping shadow-[0_0_10px_#34d399]" />
+                      STATUS: MISSION READY
+                    </div>
+                    <span className="text-[9px] sm:text-[10px] font-mono text-slate-500 tracking-widest uppercase">
+                      SEC_CLEARANCE: LVL_9
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        )
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* PROJECTS (Tab) */}
+        {
+          activeTab === 'Projects' && (
+            <ProjectsTab />
+          )
+        }
+
+        {/* EDUCATION */}
+        {
+          activeTab === 'Education' && (
+            <div className="animate-in fade-in duration-700 space-y-16">
+              <div className="bg-slate-900/30 border border-white/5 p-10 rounded-[3rem] text-center hover:border-yellow-500/30 transition-all">
+                <Award size={48} className="mx-auto text-yellow-500 mb-6" />
+                <h2 className="text-2xl md:text-4xl font-black text-white uppercase italic">{educationData.degree}</h2>
+                <p className="text-slate-400 mt-4 text-lg font-bold">{educationData.institution}</p>
+                <span className="inline-block mt-4 px-6 py-2 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-black tracking-widest uppercase">{educationData.date}</span>
+              </div>
+
+              <div>
+                <h3 className="text-3xl font-black text-white italic uppercase mb-8 flex items-center gap-4"><Award className="text-blue-500" /> Google Badges & Certifications</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {googleBadges.map((b, i) => (
+                    <div key={i} className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-yellow-500/40 text-left group transition-all hover:bg-slate-900/80">
+                      <span className="text-[9px] text-yellow-500 uppercase tracking-widest font-black mb-4 block">{b.date}</span>
+                      <h4 className="text-lg font-black text-white leading-tight mb-4">{b.title}</h4>
+                      <p className="text-sm text-slate-500 font-light">{b.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {/* EXPERIENCE (Tab 3) */}
+        {
+          activeTab === 'Experience' && (
+            <div className="grid gap-6">
+              {experienceData.map((ex, i) => (
+                <div key={i} className="group bg-slate-900/20 backdrop-blur-md border border-white/5 p-8 md:p-10 rounded-[2.5rem] hover:border-indigo-500/30 transition-all animate-in slide-in-from-right-12" style={{ animationDelay: `${i * 100}ms` }}>
+                  <div className="flex flex-col md:flex-row justify-between gap-6">
+                    <div className="flex items-center gap-6">
+                      <div className="min-w-[4rem] h-16 bg-white/5 rounded-2xl flex items-center justify-center text-indigo-400 group-hover:rotate-6 transition-all"><History size={28} /></div>
+                      <div>
+                        <h3 className="text-lg md:text-2xl font-black text-white uppercase italic leading-tight">{ex.role}</h3>
+                        <p className="text-xs md:text-sm font-bold text-slate-400 mt-2">{ex.company}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="px-4 py-2 bg-indigo-500/10 rounded-full text-[10px] font-black text-indigo-400 uppercase tracking-widest whitespace-nowrap">{ex.date}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* SKILLS (Tab 4) */}
+        {
+          activeTab === 'Skills' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in duration-700">
+              {skillsData.map((cat, i) => (
+                <div key={i} className="p-8 md:p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-cyan-500/40 transition-all group">
+                  <h3 className="text-xl md:text-2xl font-black text-white uppercase italic mb-6 border-b border-white/10 pb-4 group-hover:text-cyan-400 transition-colors">{cat.category}</h3>
+                  <div className="space-y-4">
+                    {cat.skills.map(s => (
+                      <div key={s} className="flex items-start gap-3 text-sm text-slate-400 font-light leading-relaxed">
+                        <CheckCircle2 size={16} className="text-cyan-500 mt-0.5 shrink-0" />
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* SERVICES (Tab 5) */}
+        {
+          activeTab === 'Services' && (
+            <div className="grid md:grid-cols-3 gap-8 animate-in slide-in-from-bottom-8">
+              {servicesData.map((srv, i) => (
+                <div key={i} className="p-10 bg-slate-900/40 border border-white/5 rounded-[3rem] hover:bg-slate-900 hover:border-orange-500/50 transition-all">
+                  <div className="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-500 mb-8"><Layers size={32} /></div>
+                  <h3 className="text-2xl font-black text-white uppercase mb-6 leading-tight">{srv.title}</h3>
+                  <ul className="space-y-4">
+                    {srv.points.map((p, j) => (
+                      <li key={j} className="text-sm text-slate-400 font-light flex items-start gap-2">
+                        <span className="text-orange-500 mt-1">•</span> {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* INDUSTRIES (Tab 6) */}
+        {
+          activeTab === 'Industries' && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in zoom-in-95">
+              {industriesData.map((ind, i) => (
+                <div key={i} className="p-8 md:p-12 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-emerald-500/40 transition-all group">
+                  <h3 className="text-3xl font-black text-white uppercase italic mb-4 group-hover:text-emerald-400">{ind.title}</h3>
+                  <p className="text-emerald-500 font-bold mb-8 text-sm uppercase tracking-widest">{ind.desc}</p>
+                  <div className="space-y-4">
+                    {ind.details.map((d, j) => (
+                      <div key={j} className="flex items-start gap-3 text-slate-400 text-sm leading-relaxed">
+                        <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{d}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* AI SOLUTIONS (Tab 7) */}
+        {
+          activeTab === 'AI Solutions' && (
+            <div className="grid lg:grid-cols-3 gap-8 animate-in fade-in">
+              {aiSolutionsData.map((ai, i) => (
+                <div key={i} className="p-10 bg-slate-950 border border-white/5 rounded-[3rem] relative overflow-hidden group hover:border-purple-500 transition-all flex flex-col h-full">
+                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-600/10 blur-[80px] group-hover:scale-150 transition-all" />
+                  <h3 className="text-4xl font-black text-white uppercase italic mb-2 relative z-10">{ai.title}</h3>
+                  <p className="text-[10px] text-purple-400 font-black tracking-widest uppercase mb-8 pb-4 border-b border-white/10 relative z-10">{ai.subtitle}</p>
+                  <div className="space-y-4 relative z-10 flex-grow">
+                    {ai.points.map((p, j) => (
+                      <div key={j} className="text-sm text-slate-400 font-light flex items-start gap-2">
+                        <Zap size={14} className="text-purple-500 mt-1 shrink-0" />
+                        <span>{p}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        {/* CYBER SECURITY (Tab 8) */}
+        {
+          activeTab === 'Cyber Security' && (
+            <div className="space-y-12 animate-in slide-in-from-left-8">
+              <div className="bg-red-950/20 border border-red-500/20 p-10 md:p-16 rounded-[3rem] text-center">
+                <ShieldAlert size={64} className="mx-auto text-red-500 mb-8" />
+                <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">{cyberSecurityData[0].title}</h2>
+                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">{cyberSecurityData[0].desc}</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-red-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{cyberSecurityData[1].title}</h3>
+                  <ul className="space-y-6">
+                    {cyberSecurityData[1].list.map((item, i) => (
+                      <li key={i} className="flex items-start gap-4 text-slate-400">
+                        <Lock size={20} className="text-red-500 shrink-0" /> <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-red-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{cyberSecurityData[2].title}</h3>
+                  <p className="text-slate-400 leading-relaxed text-lg">{cyberSecurityData[2].desc}</p>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    {['Discover', 'Assess', 'Control', 'Report'].map(step => (
+                      <span key={step} className="px-4 py-2 bg-red-500/10 text-red-400 rounded-lg text-xs font-black uppercase tracking-widest">{step}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {/* AI SECURITY (Tab 9) */}
+        {
+          activeTab === 'AI Security' && (
+            <div className="space-y-12 animate-in slide-in-from-right-8">
+              <div className="bg-rose-950/20 border border-rose-500/20 p-10 md:p-16 rounded-[3rem] text-center">
+                <Lock size={64} className="mx-auto text-rose-500 mb-8" />
+                <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">{aiSecurityData[0].title}</h2>
+                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">{aiSecurityData[0].desc}</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-rose-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{aiSecurityData[1].title}</h3>
+                  <ul className="space-y-6">
+                    {aiSecurityData[1].list.map((item, i) => (
+                      <li key={i} className="flex items-start gap-4 text-slate-400">
+                        <ShieldAlert size={20} className="text-rose-500 shrink-0" /> <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-rose-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{aiSecurityData[2].title}</h3>
+                  <p className="text-slate-400 leading-relaxed text-lg">{aiSecurityData[2].desc}</p>
+                  <div className="mt-8 grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-white/5 rounded-xl text-center"><span className="block text-2xl font-black text-white">73%</span><span className="text-[9px] text-slate-500 uppercase tracking-widest">Breached AI Systems</span></div>
+                    <div className="p-4 bg-white/5 rounded-xl text-center"><span className="block text-2xl font-black text-white">82%</span><span className="text-[9px] text-slate-500 uppercase tracking-widest">Financial Prompt Injections</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
+
+        {/* AGI ANTI-TERROR (Tab 10) */}
+        {
+          activeTab === 'AGI Anti-Terror' && (
+            <div className="space-y-12 animate-in fade-in duration-700">
+              {/* Header */}
+              <div className="bg-teal-950/20 border border-teal-500/20 p-10 md:p-16 rounded-[3rem] text-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-teal-500/5 blur-[100px] group-hover:bg-teal-500/10 transition-all rounded-[3rem]"></div>
+                <ShieldAlert size={64} className="mx-auto text-teal-400 mb-8 relative z-10 animate-pulse" />
+                <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6 relative z-10">{antiTerrorData.title}</h2>
+                <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed relative z-10">{antiTerrorData.goal.desc}</p>
+
+                <div className="mt-8 flex flex-wrap justify-center gap-3 relative z-10">
+                  {antiTerrorData.goal.purpose.map((p, i) => (
+                    <span key={i} className="px-4 py-2 bg-teal-500/10 text-teal-300 rounded-lg text-xs font-black uppercase tracking-widest border border-teal-500/20">{p}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Important Legal Note */}
+              <div className="p-8 bg-red-950/30 border-l-4 border-red-500 rounded-2xl flex items-start gap-4 shadow-xl">
+                <ShieldAlert className="text-red-500 shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-red-400 font-black uppercase tracking-widest text-sm mb-2">Legal Limitation Summary</h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">{antiTerrorData.goal.important}</p>
+                </div>
+              </div>
+
+              {/* Architecture & Stack Grid */}
+              <div className="grid lg:grid-cols-2 gap-8">
+                {/* Architecture */}
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Architecture</h3>
+                  <div className="space-y-8">
+                    {antiTerrorData.architecture.map((arch, i) => (
+                      <div key={i}>
+                        <h4 className="text-teal-400 font-black uppercase tracking-widest text-sm mb-3">{arch.title}</h4>
+                        <ul className="space-y-2">
+                          {arch.items.map((item, j) => (
+                            <li key={j} className="flex items-start gap-3 text-slate-400 text-sm">
+                              <Binary size={14} className="text-teal-500/50 mt-1 shrink-0" /> <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Technologies Stack */}
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40 transition-all">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">Tech Stack & Cloud</h3>
+                  <div className="grid gap-6">
+                    {antiTerrorData.techStack.map((tech, i) => (
+                      <div key={i} className="p-5 bg-white/5 rounded-2xl border border-white/5">
+                        <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-2">{tech.category}</h4>
+                        <p className="text-slate-300 text-sm font-light">{tech.items}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Hardware Components */}
+              <div className="grid md:grid-cols-2 gap-8">
+                {antiTerrorData.components.map((comp, i) => (
+                  <div key={i} className="p-10 bg-slate-950 border border-white/5 rounded-[3rem] hover:border-indigo-500/40 transition-all group relative overflow-hidden flex flex-col h-full">
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-all" />
+                    <Bot size={32} className="text-indigo-400 mb-6 relative z-10" />
+                    <h3 className="text-2xl font-black text-white uppercase italic mb-2 relative z-10">{comp.title}</h3>
+                    <p className="text-[10px] text-slate-500 font-black tracking-widest uppercase mb-6 pb-4 border-b border-white/10 relative z-10">{comp.models}</p>
+
+                    <div className="space-y-6 relative z-10 flex-grow">
+                      {comp.capabilities && (
+                        <div>
+                          <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Capabilities</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {comp.capabilities.map((cap, j) => (
+                              <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{cap}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {comp.aiModels && (
+                        <div>
+                          <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">AI Models Onboard</h4>
+                          <ul className="space-y-2">
+                            {comp.aiModels.map((ai, j) => (
+                              <li key={j} className="text-xs text-slate-400 flex items-center gap-2"><Zap size={12} className="text-indigo-500" /> {ai}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {comp.features && (
+                        <div>
+                          <h4 className="text-indigo-400 text-xs font-black uppercase mb-3">Robotic Features</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {comp.features.map((feat, j) => (
+                              <span key={j} className="px-3 py-1 bg-white/5 text-slate-300 rounded text-[10px] uppercase font-bold tracking-wider">{feat}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* AI Intelligence Modules */}
+              <div className="bg-slate-950/50 p-10 md:p-14 border border-white/5 rounded-[3rem]">
+                <h3 className="text-3xl font-black text-white uppercase italic mb-10 flex items-center gap-4"><BrainCircuit className="text-purple-500" /> Neural Detection Modules</h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {antiTerrorData.intelligenceModules.map((module, i) => (
+                    <div key={i} className="p-6 bg-slate-900/60 rounded-3xl border border-white/5 hover:border-purple-500/30 transition-all flex flex-col h-full">
+                      <h4 className="text-lg font-black text-white uppercase leading-tight mb-4">{module.title}</h4>
+                      <ul className="space-y-3 mb-6 flex-grow">
+                        {module.items.map((item, j) => (
+                          <li key={j} className="text-xs text-slate-400 flex items-start gap-2"><Activity size={12} className="text-purple-500 mt-0.5 shrink-0" /> {item}</li>
+                        ))}
+                      </ul>
+                      {(module.models || module.dataset) && (
+                        <div className="mt-auto pt-4 border-t border-white/5">
+                          <span className="text-[9px] text-purple-400 font-black uppercase tracking-widest block mb-1">{module.models ? 'Models Used' : 'Dataset'}</span>
+                          <span className="text-xs text-slate-500 font-medium">{module.models || module.dataset}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Legal & Deployment Split */}
+              <div className="grid lg:grid-cols-2 gap-8">
+                <div className="p-10 bg-slate-900/30 border border-white/5 rounded-[3rem] hover:border-teal-500/40">
+                  <h3 className="text-2xl font-black text-white uppercase italic mb-8 border-b border-white/10 pb-4">{antiTerrorData.legalHandling.title}</h3>
+
+                  <div className="space-y-8">
+                    <div>
+                      <h4 className="text-green-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><CheckCircle2 size={16} /> Allowed Operations</h4>
+                      <ul className="space-y-3">
+                        {antiTerrorData.legalHandling.use.map((item, i) => (
+                          <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-green-500 rounded-full shrink-0" /> {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="text-red-400 font-black uppercase tracking-widest text-xs mb-4 flex items-center gap-2"><X size={16} /> Strictly Prohibited</h4>
+                      <ul className="space-y-3">
+                        {antiTerrorData.legalHandling.never.map((item, i) => (
+                          <li key={i} className="text-sm text-slate-400 flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" /> {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-8">
+                  <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
+                    <h3 className="text-xl font-black text-white uppercase italic mb-6">High Priority Deployment Zones</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {antiTerrorData.deploymentAreas.map((area, i) => (
+                        <span key={i} className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs font-bold uppercase tracking-wider">{area}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem] hover:border-teal-500/40">
+                    <h3 className="text-xl font-black text-white uppercase italic mb-6">Risk Scoring & Action Matrix</h3>
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      {antiTerrorData.riskScoring.map((score, i) => (
+                        <div key={i} className="p-3 bg-white/5 rounded-lg text-center border border-white/5 text-xs text-slate-400 font-medium">{score}</div>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="text-[10px] text-red-500 font-black uppercase tracking-widest w-full mb-1">Automated Actions on High Threshold</span>
+                      {antiTerrorData.riskActions.map((action, i) => (
+                        <span key={i} className="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-md text-[10px] uppercase font-bold tracking-wider">{action}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Info Panels */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
+                  <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><Lock size={14} className="inline mr-2" /> Security Layer</h4>
+                  <ul className="space-y-2">
+                    {antiTerrorData.securityLayer.map((sec, i) => (
+                      <li key={i} className="text-xs text-slate-400">• {sec}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-slate-900/40 rounded-[2rem] border border-white/5">
+                  <h4 className="text-teal-400 font-black uppercase tracking-widest text-xs mb-4"><ShieldCheck size={14} className="inline mr-2" /> Ethical Requirements</h4>
+                  <ul className="space-y-2">
+                    {antiTerrorData.requirements.map((req, i) => (
+                      <li key={i} className="text-xs text-slate-400">• {req}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-gradient-to-br from-teal-900/50 to-slate-900/40 rounded-[2rem] border border-teal-500/20 md:col-span-2 lg:col-span-1">
+                  <h4 className="text-white font-black uppercase tracking-widest text-xs mb-4"><Globe size={14} className="inline mr-2" /> Startup Potential</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {antiTerrorData.startup.map((st, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-teal-500/20 text-teal-300 rounded-lg text-[10px] font-bold uppercase tracking-wider">{st}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          )
+        }
+
+      </main >
+
+      <footer className="relative z-10 border-t border-white/5 bg-black pt-20 pb-12 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter mb-2">Murtuza HIGH LEVEL ARCHITECT / DEVELOPER</h2>
+            <p className="text-[12px] text-cyan-400 uppercase tracking-[0.5em] font-black">PRECISION ENGINEERED SOLUTIONS</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              onClick={handleContact}
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black text-[18px] uppercase tracking-widest transition-all flex items-center gap-2"
+            >
+              Get in Touch <MessageSquare size={24} />
+            </button>
+          </div>
+        </div>
+
+        {/* Live Visitor Statistics Section */}
+        <div id="live-visitor-stats" className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/10">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+              <h3 className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-slate-300">
+                Live Visitor Statistics
+              </h3>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 bg-white/5 border border-white/5 px-2.5 py-1 rounded-md">
+                PKT (UTC+5)
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Total Visitors */}
+            <div className="p-5 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-cyan-500/30 transition-all flex flex-col justify-between">
+              <div className="flex items-center justify-between text-slate-400 text-xs mb-3">
+                <span className="font-mono text-[11px] uppercase tracking-wider font-semibold">Total Visitors</span>
+                <Users size={16} className="text-cyan-400/80" />
+              </div>
+              <div id="stat-total-visitors" className="text-2xl sm:text-3xl font-black font-mono text-white tracking-tight">
+                {visitorStats.status === 'loading' && visitorStats.totalVisitors === null ? (
+                  <span className="text-slate-600 animate-pulse text-lg">...</span>
+                ) : visitorStats.status === 'error' && visitorStats.totalVisitors === null ? (
+                  <span className="text-red-400 text-xs font-normal">Unavailable</span>
+                ) : (
+                  Number(visitorStats.totalVisitors || 0).toLocaleString()
+                )}
+              </div>
+            </div>
+
+            {/* Today's Visitors */}
+            <div className="p-5 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-blue-500/30 transition-all flex flex-col justify-between">
+              <div className="flex items-center justify-between text-slate-400 text-xs mb-3">
+                <span className="font-mono text-[11px] uppercase tracking-wider font-semibold">Today's Visitors</span>
+                <Calendar size={16} className="text-blue-400/80" />
+              </div>
+              <div id="stat-today-visitors" className="text-2xl sm:text-3xl font-black font-mono text-cyan-400 tracking-tight">
+                {visitorStats.status === 'loading' && visitorStats.todayVisitors === null ? (
+                  <span className="text-slate-600 animate-pulse text-lg">...</span>
+                ) : visitorStats.status === 'error' && visitorStats.todayVisitors === null ? (
+                  <span className="text-red-400 text-xs font-normal">Unavailable</span>
+                ) : (
+                  Number(visitorStats.todayVisitors || 0).toLocaleString()
+                )}
+              </div>
+            </div>
+
+            {/* Online Visitors */}
+            <div className="p-5 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
+              <div className="flex items-center justify-between text-slate-400 text-xs mb-3">
+                <span className="font-mono text-[11px] uppercase tracking-wider font-semibold">Online Visitors</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              </div>
+              <div id="stat-online-visitors" className="text-2xl sm:text-3xl font-black font-mono text-emerald-400 tracking-tight">
+                {visitorStats.status === 'loading' && visitorStats.onlineVisitors === null ? (
+                  <span className="text-slate-600 animate-pulse text-lg">...</span>
+                ) : (
+                  Number(visitorStats.onlineVisitors || 0).toLocaleString()
+                )}
+              </div>
+            </div>
+
+            {/* Total Page Views */}
+            <div className="p-5 rounded-2xl bg-slate-900/40 border border-white/5 hover:border-indigo-500/30 transition-all flex flex-col justify-between">
+              <div className="flex items-center justify-between text-slate-400 text-xs mb-3">
+                <span className="font-mono text-[11px] uppercase tracking-wider font-semibold">Total Page Views</span>
+                <Eye size={16} className="text-indigo-400/80" />
+              </div>
+              <div id="stat-total-pageviews" className="text-2xl sm:text-3xl font-black font-mono text-indigo-400 tracking-tight">
+                {visitorStats.status === 'loading' && visitorStats.pageViews === null ? (
+                  <span className="text-slate-600 animate-pulse text-lg">...</span>
+                ) : visitorStats.status === 'error' && visitorStats.pageViews === null ? (
+                  <span className="text-red-400 text-xs font-normal">Unavailable</span>
+                ) : (
+                  Number(visitorStats.pageViews || 0).toLocaleString()
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @keyframes bounce-slow { 0%, 100% { transform: translateY(-8%); } 50% { transform: translateY(0); } }
+        .animate-bounce-slow { animation: bounce-slow 4s ease-in-out infinite; }
+        @media (min-width: 768px) { .cursor-none * { cursor: none !important; } }
+      `}} />
+    </div >
+  );
+};
+
+export default App;
